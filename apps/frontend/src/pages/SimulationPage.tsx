@@ -1,5 +1,5 @@
 import { useDeferredValue, useMemo, useRef, useState } from "react";
-import { useAgentContext, useComponent, useFrontendTool } from "@copilotkit/react-core/v2";
+import { useAgentContext, useComponent, useConfigureSuggestions, useFrontendTool } from "@copilotkit/react-core/v2";
 import { z } from "zod";
 import { BenchmarkComparison } from "../components/BenchmarkComparison";
 import { PersonaReactionCard } from "../components/PersonaReactionCard";
@@ -68,6 +68,7 @@ export function SimulationPage() {
   const [completion, setCompletion] = useState<RunCompletedPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeSegment, setActiveSegment] = useState("all");
+  const [copiedPromptTitle, setCopiedPromptTitle] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   const filteredPersonas = useMemo(() => {
@@ -92,6 +93,43 @@ export function SimulationPage() {
     if (runState === "completed") return "Run complete";
     return "Run failed";
   }, [personaCount, personas.length, runState]);
+
+  const copilotPrompts = useMemo(() => {
+    const topPersona = personas[0]?.persona_name ?? "the first completed persona";
+    const activeFilterLabel = activeSegment === "all" ? "all segments" : activeSegment.replaceAll("_", " ");
+
+    return [
+      {
+        title: "Executive readout",
+        message:
+          "Summarize the current simulation in five bullets: overall sentiment, moved segments, strongest quotes, red flags, and benchmark fit."
+      },
+      {
+        title: "Persona deep dive",
+        message: `Explain ${topPersona}'s reaction, what values are driving it, and what campaign risk it signals.`
+      },
+      {
+        title: "Red flags",
+        message: "Show the red flags in the current run and rank them by campaign urgency."
+      },
+      {
+        title: "Benchmark fit",
+        message: "Explain how this simulation compares with the Dobbs benchmark and where it may be over- or under-reading sentiment."
+      },
+      {
+        title: "Segment lens",
+        message: `Filter the persona grid to ${activeFilterLabel === "all segments" ? "suburban_women" : activeFilterLabel} and summarize what that segment is saying.`
+      }
+    ];
+  }, [activeSegment, personas]);
+
+  useConfigureSuggestions(
+    {
+      suggestions: copilotPrompts,
+      available: "always"
+    },
+    [copilotPrompts]
+  );
 
   useAgentContext({
     description:
@@ -320,6 +358,16 @@ export function SimulationPage() {
     }
   }
 
+  async function copyCopilotPrompt(title: string, message: string) {
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopiedPromptTitle(title);
+      window.setTimeout(() => setCopiedPromptTitle(null), 1600);
+    } catch {
+      setCopiedPromptTitle(null);
+    }
+  }
+
   return (
     <main className="simulation-app">
       <section className="hero">
@@ -357,6 +405,47 @@ export function SimulationPage() {
         onUseMockModeChange={setUseMockMode}
         onRun={runSimulation}
       />
+
+      <section className="copilot-command-center">
+        <div className="copilot-command-copy">
+          <p className="eyebrow">Copilot layer</p>
+          <h2>Ask against the live run state.</h2>
+          <p>
+            The assistant can see streamed persona cards, active segment filters, synthesis,
+            red flags, benchmark results, memory mode, and mock/live status.
+          </p>
+        </div>
+        <div className="copilot-context-grid" aria-label="Copilot context summary">
+          <div>
+            <span>Runtime</span>
+            <strong>Sidebar ready</strong>
+          </div>
+          <div>
+            <span>Persona context</span>
+            <strong>{personas.length}/{personaCount}</strong>
+          </div>
+          <div>
+            <span>Active segment</span>
+            <strong>{activeSegment === "all" ? "All" : activeSegment.replaceAll("_", " ")}</strong>
+          </div>
+          <div>
+            <span>Memory</span>
+            <strong>{memoryEnabled ? "Enabled" : "Disabled"}</strong>
+          </div>
+        </div>
+        <div className="copilot-prompt-rail" aria-label="Suggested Copilot prompts">
+          {copilotPrompts.map((prompt) => (
+            <button
+              key={prompt.title}
+              type="button"
+              title={prompt.message}
+              onClick={() => void copyCopilotPrompt(prompt.title, prompt.message)}
+            >
+              {copiedPromptTitle === prompt.title ? "Copied" : prompt.title}
+            </button>
+          ))}
+        </div>
+      </section>
 
       {error ? <section className="error-banner">{error}</section> : null}
 

@@ -213,6 +213,82 @@ body {
   font-weight: 800;
 }
 
+.copilot-command-center {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr) minmax(220px, 0.7fr);
+  gap: 18px;
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid rgba(119, 168, 120, 0.32);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(15, 37, 48, 0.94), rgba(23, 27, 27, 0.88)),
+    repeating-linear-gradient(90deg, rgba(119, 168, 120, 0.08) 0 1px, transparent 1px 22px);
+  box-shadow: var(--shadow);
+}
+
+.copilot-command-copy p:not(.eyebrow) {
+  max-width: 700px;
+  margin-bottom: 0;
+  color: rgba(248, 237, 216, 0.68);
+  line-height: 1.6;
+}
+
+.copilot-command-copy h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.copilot-context-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.copilot-context-grid div {
+  min-height: 76px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(248, 237, 216, 0.06);
+}
+
+.copilot-context-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(248, 237, 216, 0.52);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.copilot-context-grid strong {
+  display: block;
+  color: #fff8eb;
+  overflow-wrap: anywhere;
+}
+
+.copilot-prompt-rail {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.copilot-prompt-rail button {
+  min-height: 42px;
+  border: 1px solid rgba(119, 168, 120, 0.42);
+  border-radius: 16px;
+  background: rgba(119, 168, 120, 0.16);
+  color: #c8e9c8;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.copilot-prompt-rail button:hover {
+  border-color: rgba(251, 220, 143, 0.7);
+  color: #fbdc8f;
+}
+
 .panel {
   margin-top: 24px;
   padding: 28px;
@@ -482,7 +558,8 @@ body {
   .hero,
   .split,
   .benchmark-card,
-  .benchmark-grid {
+  .benchmark-grid,
+  .copilot-command-center {
     grid-template-columns: 1fr;
   }
 
@@ -500,12 +577,14 @@ body {
   .hero > div,
   .status-panel,
   .control-deck,
-  .panel {
+  .panel,
+  .copilot-command-center {
     border-radius: 22px;
   }
 
   .hero > div,
-  .panel {
+  .panel,
+  .copilot-command-center {
     padding: 22px;
   }
 
@@ -517,5 +596,9 @@ body {
   .inline-heading {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .copilot-context-grid {
+    grid-template-columns: 1fr;
   }
 }

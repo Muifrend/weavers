@@ -1,7 +1,7 @@
 import { CopilotKit, CopilotSidebar } from "@copilotkit/react-core/v2";
 import { SimulationPage } from "./pages/SimulationPage";
 
-const runtimeUrl = import.meta.env.VITE_COPILOTKIT_RUNTIME_URL ?? "http://localhost:8000/api/copilotkit";
+const runtimeUrl = import.meta.env.VITE_COPILOTKIT_RUNTIME_URL ?? "http://localhost:3001/api/copilotkit";
 
 export default function App() {
   return (
@@ -9,11 +9,14 @@ export default function App() {
       <SimulationPage />
       <CopilotSidebar
         agentId="default"
+        defaultOpen={false}
+        position="right"
+        width="420px"
         labels={{
           modalHeaderTitle: "Campaign Copilot",
-          chatInputPlaceholder: "Ask about personas, red flags, sentiment, or benchmark...",
+          chatInputPlaceholder: "Ask for a persona readout, red flag, or segment filter...",
           welcomeMessageText:
-            "Ask me to explain a persona, summarize the reaction, show red flags, compare the benchmark, or filter a segment."
+            "I can read the current simulation state, explain persona reactions, summarize movement, surface red flags, compare the Dobbs benchmark, and filter segments."
         }}
       />
     </CopilotKit>
