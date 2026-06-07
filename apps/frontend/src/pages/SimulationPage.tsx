@@ -18,7 +18,7 @@ import type {
   SynthesisCompletedPayload,
   SynthesisSegmentPayload
 } from "../lib/agui";
-import { startSimulation } from "../services/simulationClient";
+import { generatePersonasForState, startSimulation, type PersonaGenerationResponse } from "../services/simulationClient";
 
 const personaSchema = z.object({
   persona_id: z.string(),
@@ -52,11 +52,17 @@ const benchmarkSchema = z.object({
   interpretation: z.string()
 });
 
+type ActiveTab = "intake" | "sentiment";
+
 export function SimulationPage() {
   const [stimulusText, setStimulusText] = useState(dobbsPreset.stimulus_text);
   const [memoryEnabled, setMemoryEnabled] = useState(false);
   const [personaCount, setPersonaCount] = useState(20);
-  const [useMockMode, setUseMockMode] = useState(import.meta.env.VITE_USE_MOCK_SIMULATION === "true");
+  const [activeTab, setActiveTab] = useState<ActiveTab>("intake");
+  const [generationLocation, setGenerationLocation] = useState("California");
+  const [generationCount, setGenerationCount] = useState(20);
+  const [generationState, setGenerationState] = useState<"idle" | "generating" | "completed" | "failed">("idle");
+  const [generationResult, setGenerationResult] = useState<PersonaGenerationResponse | null>(null);
   const [runState, setRunState] = useState<RunState>("idle");
   const [personas, setPersonas] = useState<PersonaReactionPayload[]>([]);
   const deferredPersonas = useDeferredValue(personas);
@@ -93,15 +99,37 @@ export function SimulationPage() {
     return "Run failed";
   }, [personaCount, personas.length, runState]);
 
+  const generationStatusLabel = useMemo(() => {
+    if (generationState === "generating") return "Generating population";
+    if (generationState === "completed") return `${generationResult?.personas.length ?? 0} personas ready`;
+    if (generationState === "failed") return "Generation failed";
+    return "Ready to generate";
+  }, [generationResult?.personas.length, generationState]);
+
+  const canRunSimulation =
+    generationState === "completed" && (generationResult?.personas.length ?? 0) >= personaCount;
+
   useAgentContext({
     description:
       "Current state of the campaign persona simulator UI. Use this to answer questions about personas, red flags, sentiment, benchmark, filters, and run status.",
     value: {
       stimulusText,
       preset: dobbsPreset.event_name,
+      activeTab,
       memoryEnabled,
+      generationState,
+      generationLocation,
+      generationCount,
+      generatedPersonaCount: generationResult?.personas.length ?? 0,
+      generatedPersonas: generationResult?.personas.map((persona) => ({
+        name: persona.name,
+        age: persona.age,
+        raceEthnicity: persona.race_ethnicity,
+        occupation: persona.occupation,
+        representationPct: persona.representation_pct ?? null,
+        segments: persona.segment_tags
+      })) ?? [],
       runState,
-      useMockMode,
       activeSegment,
       personaCount,
       completedPersonaCount: personas.length,
@@ -120,6 +148,19 @@ export function SimulationPage() {
       benchmark
     }
   });
+
+  useFrontendTool(
+    {
+      name: "switchWorkspaceTab",
+      description: "Switch between the persona intake and sentiment analysis tabs.",
+      parameters: z.object({ tab: z.enum(["intake", "sentiment"]) }),
+      handler: async ({ tab }) => {
+        setActiveTab(tab);
+        return `Switched to ${tab === "intake" ? "Persona Intake" : "Sentiment Analysis"}.`;
+      }
+    },
+    []
+  );
 
   useFrontendTool(
     {
@@ -309,8 +350,7 @@ export function SimulationPage() {
             }
           }
         },
-        controller.signal,
-        { useMockSimulation: useMockMode }
+        controller.signal
       );
     } catch (caught) {
       if (!controller.signal.aborted) {
@@ -320,105 +360,242 @@ export function SimulationPage() {
     }
   }
 
+  async function generatePopulationPersonas() {
+    setGenerationState("generating");
+    setGenerationResult(null);
+    setError(null);
+    try {
+      const result = await generatePersonasForState(generationLocation, generationCount);
+      setGenerationResult(result);
+      setPersonaCount(Math.min(result.personas.length, 20));
+      setGenerationState("completed");
+    } catch (caught) {
+      setGenerationState("failed");
+      setError(caught instanceof Error ? caught.message : "Persona generation failed.");
+    }
+  }
+
   return (
-    <main className="simulation-app">
-      <section className="hero">
-        <div>
-          <p className="eyebrow">Synthetic voter focus group</p>
-          <h1>Directional reaction signal in seconds.</h1>
-          <p className="hero-copy">
-            Run 20 multi-model personas against the Dobbs preset, stream voter voice cards,
-            synthesize segment-level signals, and compare against static benchmark data.
-          </p>
+    <main className="weavers-shell">
+      <aside className="weavers-sidebar">
+        <div className="sidebar-brand">
+          <strong>weavers</strong>
+          <span aria-hidden="true">‹</span>
         </div>
-        <aside className="status-panel">
-          <span className={`status-dot ${runState}`} />
-          <strong>{progressLabel}</strong>
-          <p>
-            {personas.length} complete | {failedPersonas.length} failed | {useMockMode ? "mock" : "live"}
-          </p>
-          {completion?.weave_url ? (
-            <a href={completion.weave_url} target="_blank" rel="noreferrer">
-              Open Weave trace
-            </a>
-          ) : null}
-        </aside>
-      </section>
+        <nav className="workspace-tabs" aria-label="Workspace tabs">
+          <button
+            className={activeTab === "intake" ? "active" : ""}
+            onClick={() => setActiveTab("intake")}
+            type="button"
+          >
+            Persona Intake
+          </button>
+          <button
+            className={activeTab === "sentiment" ? "active" : ""}
+            onClick={() => setActiveTab("sentiment")}
+            type="button"
+          >
+            Sentiment Analysis
+          </button>
+        </nav>
+        <div className="service-list">
+          <span>AI services</span>
+          <p>Redis Agent Memory</p>
+          <p>Weave traces</p>
+          <p>CopilotKit</p>
+        </div>
+      </aside>
 
-      <SimulationControls
-        stimulusText={stimulusText}
-        memoryEnabled={memoryEnabled}
-        personaCount={personaCount}
-        runState={runState}
-        useMockMode={useMockMode}
-        onStimulusTextChange={setStimulusText}
-        onMemoryEnabledChange={setMemoryEnabled}
-        onPersonaCountChange={setPersonaCount}
-        onUseMockModeChange={setUseMockMode}
-        onRun={runSimulation}
-      />
-
-      {error ? <section className="error-banner">{error}</section> : null}
-
-      <section className="panel">
-        <div className="section-heading inline-heading">
+      <section className="weavers-main simulation-app">
+        <header className="workspace-header">
           <div>
-            <p className="eyebrow">Persona stream</p>
-            <h2>Voter voice cards</h2>
+            <p className="eyebrow">Synthetic voter focus group</p>
+            <h1>{activeTab === "intake" ? "Persona Intake" : "Sentiment Analysis"}</h1>
           </div>
-          <label className="segment-filter">
-            Segment
-            <select value={activeSegment} onChange={(event) => setActiveSegment(event.target.value)}>
-              <option value="all">All segments</option>
-              {segmentOptions.map((segment) => (
-                <option key={segment} value={segment}>
-                  {segment.replaceAll("_", " ")}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <div className="persona-grid">
-          {filteredPersonas.map((persona) => (
-            <PersonaReactionCard key={persona.persona_id} persona={persona} />
-          ))}
-          {filteredPersonas.length === 0 ? (
-            <p className="empty-note">
-              {personas.length === 0 ? "Persona cards will stream here." : "No personas match this segment."}
+          <aside className="status-panel compact">
+            <span className={`status-dot ${activeTab === "intake" ? generationState : runState}`} />
+            <strong>{activeTab === "intake" ? generationStatusLabel : progressLabel}</strong>
+            <p>
+              {generationResult?.personas.length ?? 0} generated | {personas.length} analyzed |{" "}
+              {failedPersonas.length} failed
             </p>
-          ) : null}
-        </div>
-      </section>
+            {completion?.weave_url ? (
+              <a href={completion.weave_url} target="_blank" rel="noreferrer">
+                Open Weave trace
+              </a>
+            ) : null}
+          </aside>
+        </header>
 
-      <section className="panel split">
-        <div>
-          <div className="section-heading">
-            <p className="eyebrow">Synthesis</p>
-            <h2>Segment signals</h2>
-          </div>
-          <SentimentBreakdown segments={segments} />
-        </div>
-        <div>
-          <div className="section-heading">
-            <p className="eyebrow">Executive readout</p>
-            <h2>What moved</h2>
-          </div>
-          <p className="summary-copy">{synthesis?.executive_summary ?? "Awaiting synthesis output."}</p>
-          {synthesis?.best_quotes.map((quote) => (
-            <blockquote className="quote-strip" key={`${quote.persona_id}-${quote.quote}`}>
-              {quote.quote}
-            </blockquote>
-          ))}
-          <RedFlagAlert redFlags={redFlags} />
-        </div>
-      </section>
+        {activeTab === "intake" ? (
+          <>
+            <section className="persona-generator-panel">
+              <div>
+                <p className="eyebrow">Census persona generator</p>
+                <h2>Build a representative state population</h2>
+                <p className="generator-copy">
+                  Fetch ACS Census priors, draw weighted local ACS PUMS samples, initialize one persona
+                  agent per sample, and save the generated population into the simulation persona store.
+                </p>
+              </div>
+              <label>
+                State
+                <input value={generationLocation} onChange={(event) => setGenerationLocation(event.target.value)} />
+              </label>
+              <label>
+                Personas
+                <select value={generationCount} onChange={(event) => setGenerationCount(Number(event.target.value))}>
+                  <option value={6}>6-person set</option>
+                  <option value={10}>10-person set</option>
+                  <option value={12}>12-person set</option>
+                  <option value={20}>20-person set</option>
+                </select>
+              </label>
+              <button
+                disabled={generationState === "generating" || generationLocation.trim().length === 0}
+                onClick={generatePopulationPersonas}
+                type="button"
+              >
+                {generationState === "generating" ? "Generating..." : "Generate Population"}
+              </button>
+              {generationResult ? (
+                <div className="generation-summary">
+                  <strong>{generationResult.personas.length} personas saved</strong>
+                  <span>{generationResult.representation_total_pct}% represented</span>
+                  <span>{generationResult.saved_path ?? "Not persisted"}</span>
+                </div>
+              ) : null}
+            </section>
 
-      <section className="panel">
-        <div className="section-heading">
-          <p className="eyebrow">Calibration</p>
-          <h2>Benchmark comparison</h2>
-        </div>
-        <BenchmarkComparison benchmark={benchmark} />
+            {error ? <section className="error-banner">{error}</section> : null}
+
+            {generationResult ? (
+              <section className="panel">
+                <div className="section-heading inline-heading">
+                  <div>
+                    <p className="eyebrow">Generated population</p>
+                    <h2>Representative personas</h2>
+                  </div>
+                  <button type="button" onClick={() => setActiveTab("sentiment")}>
+                    Analyze Sentiment
+                  </button>
+                </div>
+                <div className="generated-persona-grid">
+                  {generationResult.personas.map((persona) => (
+                    <article className="generated-persona-card" key={persona.persona_id}>
+                      <div>
+                        <strong>{persona.name}</strong>
+                        <span>{persona.representation_pct ?? 0}%</span>
+                      </div>
+                      <p>{persona.age} · {persona.race_ethnicity} · {persona.occupation}</p>
+                      <small>{persona.segment_tags.join(", ")}</small>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+          </>
+        ) : (
+          <>
+            <section className="hero sentiment-hero">
+              <div>
+                <p className="eyebrow">Dobbs preset</p>
+                <h2>Run the generated population against the event.</h2>
+                <p className="hero-copy">
+                  Stream persona reactions, synthesize segment-level signals, and compare against the static Dobbs
+                  benchmark after persona intake has saved an evidence-backed population.
+                </p>
+              </div>
+              <aside className="status-panel">
+                <span className={`status-dot ${runState}`} />
+                <strong>{progressLabel}</strong>
+                <p>
+                  {personas.length} complete | {failedPersonas.length} failed | evidence-backed live run
+                </p>
+                {completion?.weave_url ? (
+                  <a href={completion.weave_url} target="_blank" rel="noreferrer">
+                    Open Weave trace
+                  </a>
+                ) : null}
+              </aside>
+            </section>
+
+            <SimulationControls
+              stimulusText={stimulusText}
+              memoryEnabled={memoryEnabled}
+              personaCount={personaCount}
+              runState={runState}
+              canRun={canRunSimulation}
+              onStimulusTextChange={setStimulusText}
+              onMemoryEnabledChange={setMemoryEnabled}
+              onPersonaCountChange={setPersonaCount}
+              onRun={runSimulation}
+            />
+
+            {error ? <section className="error-banner">{error}</section> : null}
+
+            <section className="panel">
+              <div className="section-heading inline-heading">
+                <div>
+                  <p className="eyebrow">Persona stream</p>
+                  <h2>Voter voice cards</h2>
+                </div>
+                <label className="segment-filter">
+                  Segment
+                  <select value={activeSegment} onChange={(event) => setActiveSegment(event.target.value)}>
+                    <option value="all">All segments</option>
+                    {segmentOptions.map((segment) => (
+                      <option key={segment} value={segment}>
+                        {segment.replaceAll("_", " ")}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="persona-grid">
+                {filteredPersonas.map((persona) => (
+                  <PersonaReactionCard key={persona.persona_id} persona={persona} />
+                ))}
+                {filteredPersonas.length === 0 ? (
+                  <p className="empty-note">
+                    {personas.length === 0 ? "Persona cards will stream here." : "No personas match this segment."}
+                  </p>
+                ) : null}
+              </div>
+            </section>
+
+            <section className="panel split">
+              <div>
+                <div className="section-heading">
+                  <p className="eyebrow">Synthesis</p>
+                  <h2>Segment signals</h2>
+                </div>
+                <SentimentBreakdown segments={segments} />
+              </div>
+              <div>
+                <div className="section-heading">
+                  <p className="eyebrow">Executive readout</p>
+                  <h2>What moved</h2>
+                </div>
+                <p className="summary-copy">{synthesis?.executive_summary ?? "Awaiting synthesis output."}</p>
+                {synthesis?.best_quotes.map((quote) => (
+                  <blockquote className="quote-strip" key={`${quote.persona_id}-${quote.quote}`}>
+                    {quote.quote}
+                  </blockquote>
+                ))}
+                <RedFlagAlert redFlags={redFlags} />
+              </div>
+            </section>
+
+            <section className="panel">
+              <div className="section-heading">
+                <p className="eyebrow">Calibration</p>
+                <h2>Benchmark comparison</h2>
+              </div>
+              <BenchmarkComparison benchmark={benchmark} />
+            </section>
+          </>
+        )}
       </section>
     </main>
   );

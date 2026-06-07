@@ -11,9 +11,9 @@ export default function App() {
         agentId="default"
         labels={{
           modalHeaderTitle: "Campaign Copilot",
-          chatInputPlaceholder: "Ask about personas, red flags, sentiment, or benchmark...",
+          chatInputPlaceholder: "Ask about intake, personas, sentiment, or benchmark...",
           welcomeMessageText:
-            "Ask me to explain a persona, summarize the reaction, show red flags, compare the benchmark, or filter a segment."
+            "Ask me to switch tabs, explain generated personas, summarize reactions, show red flags, compare the benchmark, or filter a segment."
         }}
       />
     </CopilotKit>

@@ -1,4 +1,3 @@
-import { createMockSimulationEvents } from "../data/mockSimulation";
 import type { EventEnvelope } from "../lib/agui";
 
 export type SimulationRequest = {
@@ -14,56 +13,61 @@ export type SimulationEventHandlers = {
   onDone?: () => void;
 };
 
-export type SimulationOptions = {
-  useMockSimulation?: boolean;
+export type GeneratedPersonaSummary = {
+  persona_id: string;
+  name: string;
+  age: number;
+  race_ethnicity: string;
+  occupation: string;
+  representation_pct?: number;
+  segment_tags: string[];
+};
+
+export type PersonaGenerationResponse = {
+  status: string;
+  location: string;
+  personas: GeneratedPersonaSummary[];
+  representation_total_pct: number;
+  saved_path?: string;
+  warnings: string[];
 };
 
 export async function startSimulation(
   request: SimulationRequest,
   handlers: SimulationEventHandlers,
-  signal?: AbortSignal,
-  options: SimulationOptions = {}
+  signal?: AbortSignal
 ) {
-  const useMockSimulation = options.useMockSimulation ?? import.meta.env.VITE_USE_MOCK_SIMULATION === "true";
-
-  if (useMockSimulation) {
-    await runMockSimulation(request, handlers, signal);
-    return;
-  }
-
   await streamLiveSimulation(request, handlers, signal);
 }
 
 export async function subscribeToSimulationEvents(
   request: SimulationRequest,
   handlers: SimulationEventHandlers,
-  signal?: AbortSignal,
-  options?: SimulationOptions
-) {
-  await startSimulation(request, handlers, signal, options);
-}
-
-export async function runMockSimulation(
-  request: SimulationRequest,
-  handlers: SimulationEventHandlers,
   signal?: AbortSignal
 ) {
-  const events = createMockSimulationEvents(request.persona_count, request.memory_enabled);
+  await startSimulation(request, handlers, signal);
+}
 
-  try {
-    for (const event of events) {
-      if (signal?.aborted) return;
-      const delayMs = event.event_type === "persona_reaction.completed" ? 260 : 380;
-      await wait(delayMs, signal);
-      if (signal?.aborted) return;
-      handlers.onEvent(event);
-    }
-    handlers.onDone?.();
-  } catch (error) {
-    if (!signal?.aborted) {
-      handlers.onError?.(error instanceof Error ? error : new Error("Mock simulation failed."));
-    }
+export async function generatePersonasForState(location: string, personaCount: number) {
+  const apiUrl = (import.meta.env.VITE_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
+  const response = await fetch(`${apiUrl}/api/personas/generate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      location,
+      persona_count: personaCount,
+      persist: true
+    })
+  });
+
+  const payload = await response.json();
+  if (!response.ok) {
+    const message = payload?.detail?.message ?? `Persona generation failed with HTTP ${response.status}`;
+    throw new Error(message);
   }
+  return payload as PersonaGenerationResponse;
 }
 
 async function streamLiveSimulation(
@@ -122,23 +126,4 @@ function parseSseBlock(block: string): EventEnvelope | null {
 
   if (dataLines.length === 0) return null;
   return JSON.parse(dataLines.join("\n")) as EventEnvelope;
-}
-
-function wait(ms: number, signal?: AbortSignal) {
-  return new Promise<void>((resolve, reject) => {
-    if (signal?.aborted) {
-      resolve();
-      return;
-    }
-
-    const timeout = window.setTimeout(resolve, ms);
-    signal?.addEventListener(
-      "abort",
-      () => {
-        window.clearTimeout(timeout);
-        reject(new DOMException("Simulation aborted.", "AbortError"));
-      },
-      { once: true }
-    );
-  });
 }

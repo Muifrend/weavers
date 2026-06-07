@@ -87,8 +87,9 @@ class CampaignOrchestrator:
             )
             return
 
-        personas = self.provider_router.assign_personas(self.local_store.select_personas(request.persona_count))
-        if not personas:
+        try:
+            selected_personas = self.local_store.select_personas(request.persona_count)
+        except (FileNotFoundError, ValueError) as exc:
             yield builder.emit(
                 "run.failed",
                 {
@@ -96,12 +97,14 @@ class CampaignOrchestrator:
                     "stimulus_id": request.stimulus_id,
                     "completed_personas": 0,
                     "failed_personas": 0,
-                    "error_code": "no_personas",
-                    "message": "No personas were available.",
+                    "error_code": "personas_not_generated",
+                    "message": str(exc),
                 },
-                error=safe_error("no_personas", "No personas were available."),
+                error=safe_error("personas_not_generated", str(exc)),
             )
             return
+
+        personas = self.provider_router.assign_personas(selected_personas)
 
         agent = PersonaAgent(self.provider_router, self.memory, self.weave)
         semaphore = asyncio.Semaphore(max(1, self.settings.persona_concurrency_limit))
@@ -277,4 +280,3 @@ def benchmark_id_for(stimulus_id: str) -> str:
     if stimulus_id == "dobbs_2022":
         return "dobbs_2022"
     return stimulus_id
-

@@ -63,6 +63,9 @@ class Persona(BaseModel):
     segment_tags: list[str]
     assigned_provider: str | None = None
     assigned_model: str | None = None
+    representation_pct: float | None = None
+    representation_basis: str | None = None
+    evidence_backing: dict[str, Any] | None = None
 
     def display_location(self) -> str:
         return f"{self.location.geo_type.title()} {self.location.city}, {self.location.state}"
@@ -137,3 +140,19 @@ class EventEnvelope(BaseModel):
     weave_url: str | None = None
     error: dict[str, Any] | None = None
 
+
+class PersonaGenerationRequest(BaseModel):
+    location: str
+    persona_count: int = Field(default=10, ge=1, le=100)
+    persist: bool = True
+
+
+class PersonaGenerationResponse(BaseModel):
+    status: str
+    location: str
+    personas: list[Persona]
+    representation_total_pct: float
+    demographic_priors: dict[str, Any]
+    population_context: dict[str, Any]
+    saved_path: str | None = None
+    warnings: list[str] = Field(default_factory=list)

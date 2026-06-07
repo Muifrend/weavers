@@ -1,12 +1,43 @@
+.DS_Store
+
+# Local environment and logs
 .env
+.env.local
+.env.*.local
+*.log
+
+# Python
 __pycache__/
 *.py[cod]
+*.egg-info/
+*.dist-info/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
 .venv/
+build/
+
+# Node/Vite
 node_modules/
 dist/
 .vite/
 *.tsbuildinfo
+coverage/
+playwright-report/
+test-results/
+
+# Generated local app artifacts
+generated_personas/
+data/pums/
+**/data/pums/
 apps/frontend/vite.config.js
 apps/frontend/vite.config.d.ts
+apps/frontend/vite.config.d.ts.map
+
+# Local agent/workspace state
 .gstack/
+
+# Imported reference checkout; integrated source lives in persona_pipeline/.
+Agentic-Civilization-Persona-Generator/

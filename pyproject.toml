@@ -1,0 +1,16 @@
+[project]
+name = "weavers-persona-pipeline"
+version = "0.1.0"
+description = "Evidence-first synthetic persona intake pipeline for Weavers"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain-core>=0.3.66,<1.0.0",
+    "langgraph>=0.6,<1.0",
+    "pandas>=2.0,<3.0",
+    "pyarrow>=15.0",
+    "weave>=0.52,<0.53",
+]
+
+[tool.setuptools.packages.find]
+include = ["persona_pipeline*"]
+

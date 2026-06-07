@@ -5,12 +5,11 @@ type Props = {
   memoryEnabled: boolean;
   personaCount: number;
   runState: RunState;
-  useMockMode: boolean;
+  canRun: boolean;
   onStimulusTextChange: (value: string) => void;
   onMemoryEnabledChange: (value: boolean) => void;
   onPersonaCountChange: (value: number) => void;
   onRun: () => void;
-  onUseMockModeChange: (value: boolean) => void;
 };
 
 export function SimulationControls({
@@ -18,14 +17,14 @@ export function SimulationControls({
   memoryEnabled,
   personaCount,
   runState,
-  useMockMode,
+  canRun,
   onStimulusTextChange,
   onMemoryEnabledChange,
   onPersonaCountChange,
-  onRun,
-  onUseMockModeChange
+  onRun
 }: Props) {
   const isRunning = !["idle", "completed", "failed"].includes(runState);
+  const personaOptions = Array.from(new Set([3, 6, 10, 12, 20, personaCount])).sort((left, right) => left - right);
 
   return (
     <section className="control-deck">
@@ -42,8 +41,11 @@ export function SimulationControls({
       <label>
         Personas
         <select value={personaCount} onChange={(event) => onPersonaCountChange(Number(event.target.value))}>
-          <option value={3}>3-person smoke</option>
-          <option value={20}>20-person demo</option>
+          {personaOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}-person run
+            </option>
+          ))}
         </select>
       </label>
       <label className="toggle">
@@ -54,11 +56,7 @@ export function SimulationControls({
         />
         Memory {memoryEnabled ? "ON" : "OFF"}
       </label>
-      <label className="toggle">
-        <input checked={useMockMode} onChange={(event) => onUseMockModeChange(event.target.checked)} type="checkbox" />
-        Mock {useMockMode ? "ON" : "OFF"}
-      </label>
-      <button disabled={isRunning || stimulusText.trim().length === 0} onClick={onRun}>
+      <button disabled={isRunning || !canRun || stimulusText.trim().length === 0} onClick={onRun}>
         Run Simulation
       </button>
     </section>

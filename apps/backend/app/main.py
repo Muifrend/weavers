@@ -3,14 +3,17 @@ from __future__ import annotations
 import logging
 
 from fastapi import FastAPI
+from fastapi import HTTPException
 from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 import httpx
 
 from app.config import get_settings
+from app.agents.persona_creation import PersonaCreationAgent
 from app.orchestrator import CampaignOrchestrator
-from app.schemas import RunRequest
+from app.providers.base import ProviderError
+from app.schemas import PersonaGenerationRequest, PersonaGenerationResponse, RunRequest
 from app.streaming.ag_ui_events import encode_sse
 
 
@@ -21,6 +24,7 @@ app = FastAPI(title="Campaign Persona Agent", version="0.1.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1|0\.0\.0\.0):\d+$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -40,10 +44,41 @@ async def health() -> dict[str, object]:
         "backend_env": settings.backend_env,
         "demo_mode": settings.demo_mode,
         "configured_providers": settings.configured_providers(),
+        "census": "configured" if settings.census_api_key else "missing",
+        "pums_data_dir": str(settings.pums_data_dir),
         "redis_agent_memory": "configured" if settings.redis_configured() else "missing",
         "weave": "configured" if settings.weave_configured() else "missing",
         "missing_required": settings.missing_required(),
     }
+
+
+@app.get("/api/personas")
+async def list_personas() -> dict[str, object]:
+    orchestrator: CampaignOrchestrator = app.state.orchestrator
+    try:
+        personas = orchestrator.local_store.load_personas()
+    except FileNotFoundError:
+        return {"personas": [], "count": 0}
+    return {
+        "personas": [persona.model_dump(exclude_none=True) for persona in personas],
+        "count": len(personas),
+    }
+
+
+@app.post("/api/personas/generate", response_model=PersonaGenerationResponse)
+async def generate_personas(request: PersonaGenerationRequest) -> PersonaGenerationResponse:
+    orchestrator: CampaignOrchestrator = app.state.orchestrator
+    agent = PersonaCreationAgent(
+        settings=settings,
+        store=orchestrator.local_store,
+    )
+    try:
+        return await agent.generate_state_personas(request)
+    except ProviderError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail={"error_code": exc.error_code, "message": exc.safe_message},
+        ) from exc
 
 
 @app.api_route(

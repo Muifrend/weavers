@@ -29,6 +29,14 @@ async def main() -> int:
             failures += 1
             print(f"[fail] {display_names[provider_name]}: {exc.error_code}")
 
+    if settings.census_api_key:
+        print("[ok] Census API key configured")
+    else:
+        failures += 1
+        print("[fail] Census API key missing")
+
+    print(f"[ok] PUMS data directory configured: {settings.pums_data_dir}")
+
     redis = RedisAgentMemory(settings)
     try:
         await redis.check_connection()

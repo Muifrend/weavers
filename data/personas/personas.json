@@ -1,525 +1,975 @@
 {
   "personas": [
     {
-      "persona_id": "maria_milwaukee",
-      "name": "Maria",
-      "age": 52,
+      "persona_id": "CA_pums1_80F_white_assoc",
+      "name": "Dorothy Miller",
+      "age": 80,
       "location": {
-        "city": "Milwaukee",
-        "state": "WI",
-        "geo_type": "suburban"
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
       },
-      "race_ethnicity": "Latina",
-      "education": "Some college",
-      "occupation": "Union electrician",
-      "industry": "Construction",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Democrat",
-      "ideology": "Center-left",
-      "top_issues": ["union jobs", "healthcare", "reproductive rights"],
-      "media_diet": ["local TV", "Facebook", "MSNBC clips"],
+      "race_ethnicity": "White alone",
+      "education": "Associate's degree",
+      "occupation": "Retired / Unknown",
+      "industry": "Not in labor force",
+      "income_bracket": "$20,000-$24,999",
+      "party_affiliation": "Moderate to conservative",
+      "ideology": "Moderate to conservative",
+      "top_issues": [
+        "Social security and retirement security",
+        "Access to healthcare and Medicare",
+        "Public safety",
+        "Cost of living/Inflation"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "Network news (ABC/CBS/NBC)",
+        "Printed newspaper",
+        "AM/FM radio",
+        "Occasional public television"
+      ],
       "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "medium"
+        "government": "Mixed (some trust of Social Security/Medicare, distrust of politicians)",
+        "media": "Moderate trust in traditional broadcast news, mistrust in social media",
+        "experts": "Generally trusts doctors and local professionals"
       },
-      "personal_stake": "Has an adult daughter and worries about reproductive healthcare access.",
-      "segment_tags": ["suburban_women", "working_class", "union_household"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "associate_s_degree",
+        "not_in_labor_force",
+        "retired___unknown",
+        "moderate_to_conservative"
+      ],
+      "representation_pct": 3.99,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SEX",
+          "RAC1P",
+          "SCHL",
+          "PINCP",
+          "ESR",
+          "COW"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic fields, moderate for inferences based on age/education/race trends.",
+        "pums_sample": {
+          "sample_id": "pums_sample_1",
+          "decoded_record": {
+            "age": 80,
+            "sex": "Female",
+            "race_ethnicity": "White alone",
+            "education": "Associate's degree",
+            "employment_status": "Not in labor force",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": 23600,
+            "person_weight": 11,
+            "raw_codes": {
+              "AGEP": "80",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "19",
+              "ESR": "6",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "23600",
+              "PWGTP": "11"
+            }
+          },
+          "person_weight": 11
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     },
     {
-      "persona_id": "raymond_georgia",
-      "name": "Raymond",
-      "age": 64,
+      "persona_id": "CA_pums2",
+      "name": "Rosa Martinez",
+      "age": 63,
       "location": {
-        "city": "Valdosta",
-        "state": "GA",
-        "geo_type": "rural"
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
       },
-      "race_ethnicity": "Black",
-      "education": "High school",
-      "occupation": "Retired postal worker",
-      "industry": "Public service",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Democrat",
-      "ideology": "Moderate",
-      "top_issues": ["Social Security", "voting rights", "church community"],
-      "media_diet": ["local radio", "CNN", "church newsletter"],
+      "race_ethnicity": "Hispanic or Latino",
+      "education": "High school graduate",
+      "occupation": "Production, transportation, and material moving",
+      "industry": "Manufacturing",
+      "income_bracket": "75k-99k",
+      "party_affiliation": "Moderate Democrat",
+      "ideology": "Moderate Democrat",
+      "top_issues": [
+        "Social Security and Medicare stability",
+        "Healthcare affordability",
+        "Retirement security",
+        "Cost of living"
+      ],
+      "media_diet": [
+        "Spanish-language TV (Univision, Telemundo)",
+        "Local news broadcasts",
+        "Facebook community groups",
+        "Popular AM/FM radio"
+      ],
       "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "medium"
+        "government": "Mixed; moderate trust in Social Security and Medicare, lower in Congress overall.",
+        "media": "Prefers Spanish-language outlets and local news; skeptical of national English-language media.",
+        "experts": "Trusts healthcare providers and local experts more than distant authorities."
       },
-      "personal_stake": "Trusts his daughters to make healthcare decisions without state interference.",
-      "segment_tags": ["black_voters", "older_voters", "rural_voters"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "hispanic_or_latino",
+        "high_school_graduate",
+        "manufacturing",
+        "production__transportation__and_material_moving",
+        "moderate_democrat"
+      ],
+      "representation_pct": 6.88,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "worker_class",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "household_income_band",
+          "media_environment",
+          "top_issues",
+          "political_view",
+          "institutional_trust"
+        ],
+        "confidence": "High for census-aligned attributes; moderate for inferred political/media/issue perspectives based on California demographic and voting patterns.",
+        "pums_sample": {
+          "sample_id": "pums_sample_2",
+          "decoded_record": {
+            "age": 63,
+            "sex": "Female",
+            "race_ethnicity": "Hispanic or Latino",
+            "education": "High school graduate",
+            "employment_status": "Not in labor force",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Production, transportation, and material moving",
+            "industry": "Manufacturing",
+            "personal_income": 80000,
+            "person_weight": 19,
+            "raw_codes": {
+              "AGEP": "63",
+              "SEX": "2",
+              "HISP": "02",
+              "RAC1P": "8",
+              "SCHL": "16",
+              "ESR": "6",
+              "COW": "1",
+              "OCCP": "9620",
+              "INDP": "3490",
+              "PINCP": "80000",
+              "PWGTP": "19"
+            }
+          },
+          "person_weight": 19
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     },
     {
-      "persona_id": "destiny_atlanta",
-      "name": "Destiny",
-      "age": 24,
+      "persona_id": "california_pums_sample_3",
+      "name": "Miguel R.",
+      "age": 60,
       "location": {
-        "city": "Atlanta",
-        "state": "GA",
-        "geo_type": "urban"
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
       },
-      "race_ethnicity": "Black",
-      "education": "College graduate",
-      "occupation": "Graduate student",
-      "industry": "Education",
-      "income_bracket": "$25k-$50k",
-      "party_affiliation": "Democrat",
-      "ideology": "Progressive",
-      "top_issues": ["student debt", "racial justice", "reproductive rights"],
-      "media_diet": ["TikTok", "Instagram", "NPR podcasts"],
+      "race_ethnicity": "Hispanic or Latino",
+      "education": "Graduate or professional degree",
+      "occupation": "Management, business, science, and arts",
+      "industry": "Public administration",
+      "income_bracket": "75k-99k",
+      "party_affiliation": "Moderate-to-Liberal",
+      "ideology": "Moderate-to-Liberal",
+      "top_issues": [
+        "Public sector jobs and pensions",
+        "Healthcare access",
+        "Immigration reform",
+        "Cost of living/retirement security"
+      ],
+      "media_diet": [
+        "Mainstream news outlets (e.g., LA Times, NPR, local news)",
+        "Occasional Spanish-language news",
+        "Public affairs/public radio (KPCC, KQED)"
+      ],
       "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "high"
+        "government": "Moderate (as a government worker, likely to see nuance but may trust local institutions more)",
+        "media": "Moderate",
+        "experts": "High"
       },
-      "personal_stake": "Sees reproductive freedom as central to economic independence.",
-      "segment_tags": ["young_voters", "black_voters", "college_educated", "urban_voters"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "hispanic_or_latino",
+        "graduate_or_professional_degree",
+        "public_administration",
+        "management__business__science__and_arts",
+        "moderate_to_liberal"
+      ],
+      "representation_pct": 6.52,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "worker_class",
+          "occupation_group",
+          "industry",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "media_environment",
+          "political_view",
+          "political_view_basis",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for factual census-aligned fields; Moderate for inferred attitudes.",
+        "pums_sample": {
+          "sample_id": "pums_sample_3",
+          "decoded_record": {
+            "age": 60,
+            "sex": "Male",
+            "race_ethnicity": "Hispanic or Latino",
+            "education": "Graduate or professional degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Local government worker",
+            "occupation": "Management, business, science, and arts",
+            "industry": "Public administration",
+            "personal_income": 94000,
+            "person_weight": 18,
+            "raw_codes": {
+              "AGEP": "60",
+              "SEX": "1",
+              "HISP": "02",
+              "RAC1P": "9",
+              "SCHL": "22",
+              "ESR": "1",
+              "COW": "3",
+              "OCCP": "0440",
+              "INDP": "9470",
+              "PINCP": "94000",
+              "PWGTP": "18"
+            }
+          },
+          "person_weight": 18
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     },
     {
-      "persona_id": "linda_phoenix",
-      "name": "Linda",
-      "age": 46,
+      "persona_id": "CA_pums_sample_4",
+      "name": "Jessica Harper",
+      "age": 19,
       "location": {
-        "city": "Phoenix",
-        "state": "AZ",
-        "geo_type": "suburban"
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
       },
-      "race_ethnicity": "White",
-      "education": "Bachelor's degree",
-      "occupation": "Real estate agent",
-      "industry": "Real estate",
-      "income_bracket": "$100k-$150k",
-      "party_affiliation": "Republican",
-      "ideology": "Center-right",
-      "top_issues": ["inflation", "schools", "public safety"],
-      "media_diet": ["local TV", "Facebook", "Fox News"],
+      "race_ethnicity": "White alone",
+      "education": "High school graduate",
+      "occupation": "Sales and office",
+      "industry": "Other services",
+      "income_bracket": "$15,000-$24,999",
+      "party_affiliation": "Leans progressive",
+      "ideology": "Leans progressive",
+      "top_issues": [
+        "Affordable college and tuition",
+        "Jobs and entry-level wages",
+        "Climate change",
+        "Mental health and well-being",
+        "Renter protections"
+      ],
+      "media_diet": [
+        "YouTube",
+        "TikTok",
+        "Instagram",
+        "Streaming news headlines",
+        "Occasional mainstream online news"
+      ],
       "institutional_trust": {
-        "government": "low",
-        "media": "low",
-        "experts": "medium"
+        "government": "Moderate",
+        "media": "Skeptical of traditional media; trusts online sources from peers more",
+        "experts": "Generally trusts scientific or expert consensus"
       },
-      "personal_stake": "Has two teenage daughters and dislikes government mandates in private family matters.",
-      "segment_tags": ["suburban_women", "moderate_republicans", "college_educated"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "high_school_graduate",
+        "other_services",
+        "sales_and_office",
+        "leans_progressive"
+      ],
+      "representation_pct": 14.13,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SEX",
+          "SCHL",
+          "RAC1P",
+          "OCCP",
+          "INDP",
+          "COW",
+          "PINCP"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "Demographic, education, occupation, and income facts are directly from the public PUMS sample. Narrative elements reflect inferred generational patterns in California.",
+        "pums_sample": {
+          "sample_id": "pums_sample_4",
+          "decoded_record": {
+            "age": 19,
+            "sex": "Female",
+            "race_ethnicity": "White alone",
+            "education": "High school graduate",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Sales and office",
+            "industry": "Other services",
+            "personal_income": 19000,
+            "person_weight": 39,
+            "raw_codes": {
+              "AGEP": "19",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "16",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "4030",
+              "INDP": "8680",
+              "PINCP": "19000",
+              "PWGTP": "39"
+            }
+          },
+          "person_weight": 39
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     },
     {
-      "persona_id": "caleb_lubbock",
-      "name": "Caleb",
-      "age": 38,
-      "location": {
-        "city": "Lubbock",
-        "state": "TX",
-        "geo_type": "rural"
-      },
-      "race_ethnicity": "White",
-      "education": "High school",
-      "occupation": "Oil field technician",
-      "industry": "Energy",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Republican",
-      "ideology": "Conservative",
-      "top_issues": ["energy jobs", "border security", "religious liberty"],
-      "media_diet": ["talk radio", "Fox News", "Facebook"],
-      "institutional_trust": {
-        "government": "very low",
-        "media": "low",
-        "experts": "low"
-      },
-      "personal_stake": "Believes abortion policy should reflect local moral values.",
-      "segment_tags": ["rural_men", "evangelicals", "republican_base", "working_class"]
-    },
-    {
-      "persona_id": "anne_des_moines",
-      "name": "Anne",
-      "age": 59,
-      "location": {
-        "city": "Des Moines",
-        "state": "IA",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "White",
-      "education": "Associate degree",
-      "occupation": "Clinic billing manager",
-      "industry": "Healthcare",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Independent",
-      "ideology": "Moderate",
-      "top_issues": ["healthcare costs", "competence", "abortion access"],
-      "media_diet": ["local newspaper", "ABC News", "Facebook"],
-      "institutional_trust": {
-        "government": "medium",
-        "media": "medium",
-        "experts": "high"
-      },
-      "personal_stake": "Works around medical billing and worries about delays in emergency care.",
-      "segment_tags": ["suburban_women", "independents", "healthcare_workers"]
-    },
-    {
-      "persona_id": "javier_las_vegas",
-      "name": "Javier",
+      "persona_id": "CA_2024_pums5",
+      "name": "John",
       "age": 33,
       "location": {
-        "city": "Las Vegas",
-        "state": "NV",
-        "geo_type": "urban"
-      },
-      "race_ethnicity": "Latino",
-      "education": "Some college",
-      "occupation": "Hotel shift supervisor",
-      "industry": "Hospitality",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Independent",
-      "ideology": "Moderate",
-      "top_issues": ["cost of living", "jobs", "healthcare"],
-      "media_diet": ["YouTube", "local Spanish radio", "Instagram"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "low",
-        "experts": "medium"
-      },
-      "personal_stake": "Has sisters and coworkers who talk about access to care as an economic issue.",
-      "segment_tags": ["latino_voters", "service_workers", "urban_voters", "independents"]
-    },
-    {
-      "persona_id": "tanya_detroit",
-      "name": "Tanya",
-      "age": 41,
-      "location": {
-        "city": "Detroit",
-        "state": "MI",
-        "geo_type": "urban"
-      },
-      "race_ethnicity": "Black",
-      "education": "Some college",
-      "occupation": "Auto plant team lead",
-      "industry": "Manufacturing",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Democrat",
-      "ideology": "Center-left",
-      "top_issues": ["wages", "childcare", "healthcare"],
-      "media_diet": ["local TV", "Facebook groups", "MSNBC clips"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "medium"
-      },
-      "personal_stake": "Has managed childcare and healthcare access for younger relatives.",
-      "segment_tags": ["black_voters", "working_class", "union_household", "urban_voters"]
-    },
-    {
-      "persona_id": "ethan_boulder",
-      "name": "Ethan",
-      "age": 29,
-      "location": {
-        "city": "Boulder",
-        "state": "CO",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "White",
-      "education": "Master's degree",
-      "occupation": "Climate data analyst",
-      "industry": "Technology",
-      "income_bracket": "$100k-$150k",
-      "party_affiliation": "Democrat",
-      "ideology": "Progressive",
-      "top_issues": ["climate", "democracy", "reproductive rights"],
-      "media_diet": ["NPR", "The Atlantic", "Reddit"],
-      "institutional_trust": {
-        "government": "medium",
-        "media": "medium",
-        "experts": "high"
-      },
-      "personal_stake": "Views court legitimacy and individual rights as connected issues.",
-      "segment_tags": ["young_voters", "college_educated", "progressives", "suburban_voters"]
-    },
-    {
-      "persona_id": "brenda_erie",
-      "name": "Brenda",
-      "age": 67,
-      "location": {
-        "city": "Erie",
-        "state": "PA",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "White",
-      "education": "High school",
-      "occupation": "Retired diner owner",
-      "industry": "Small business",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Republican",
-      "ideology": "Conservative",
-      "top_issues": ["inflation", "crime", "religion"],
-      "media_diet": ["Fox News", "local radio", "Facebook"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "low",
-        "experts": "low"
-      },
-      "personal_stake": "Believes the decision returns the issue to elected state leaders.",
-      "segment_tags": ["older_voters", "republican_base", "suburban_voters"]
-    },
-    {
-      "persona_id": "noah_madison",
-      "name": "Noah",
-      "age": 21,
-      "location": {
-        "city": "Madison",
-        "state": "WI",
-        "geo_type": "urban"
-      },
-      "race_ethnicity": "White",
-      "education": "College student",
-      "occupation": "Part-time barista",
-      "industry": "Service",
-      "income_bracket": "$0-$25k",
-      "party_affiliation": "Democrat",
-      "ideology": "Progressive",
-      "top_issues": ["abortion access", "student debt", "LGBTQ rights"],
-      "media_diet": ["TikTok", "Instagram", "campus newspaper"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "high"
-      },
-      "personal_stake": "Sees Dobbs as proof that rights can disappear during his generation.",
-      "segment_tags": ["young_voters", "college_students", "progressives", "urban_voters"]
-    },
-    {
-      "persona_id": "keisha_charlotte",
-      "name": "Keisha",
-      "age": 36,
-      "location": {
-        "city": "Charlotte",
-        "state": "NC",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "Black",
-      "education": "Bachelor's degree",
-      "occupation": "Elementary school teacher",
-      "industry": "Education",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Democrat",
-      "ideology": "Center-left",
-      "top_issues": ["schools", "healthcare", "racial justice"],
-      "media_diet": ["local TV", "Instagram", "NPR"],
-      "institutional_trust": {
-        "government": "medium",
-        "media": "medium",
-        "experts": "high"
-      },
-      "personal_stake": "Has students and friends affected by unequal healthcare access.",
-      "segment_tags": ["black_voters", "suburban_women", "college_educated", "educators"]
-    },
-    {
-      "persona_id": "mike_scranton",
-      "name": "Mike",
-      "age": 49,
-      "location": {
-        "city": "Scranton",
-        "state": "PA",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "White",
-      "education": "Trade school",
-      "occupation": "HVAC contractor",
-      "industry": "Skilled trades",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Independent",
-      "ideology": "Populist moderate",
-      "top_issues": ["inflation", "jobs", "government overreach"],
-      "media_diet": ["local radio", "YouTube", "Facebook"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "low",
-        "experts": "medium"
-      },
-      "personal_stake": "Dislikes national fights that make life harder for families and businesses.",
-      "segment_tags": ["working_class", "independents", "suburban_men", "persuadable_voters"]
-    },
-    {
-      "persona_id": "susan_orange_county",
-      "name": "Susan",
-      "age": 55,
-      "location": {
-        "city": "Irvine",
+        "city": "California",
         "state": "CA",
-        "geo_type": "suburban"
+        "geo_type": "state"
       },
-      "race_ethnicity": "Asian American",
-      "education": "Bachelor's degree",
-      "occupation": "Accountant",
-      "industry": "Professional services",
-      "income_bracket": "$100k-$150k",
-      "party_affiliation": "Independent",
-      "ideology": "Fiscally conservative, socially moderate",
-      "top_issues": ["taxes", "schools", "personal freedom"],
-      "media_diet": ["Apple News", "local TV", "Facebook"],
+      "race_ethnicity": "White alone",
+      "education": "Associate's degree",
+      "occupation": "Production, transportation, and material moving",
+      "industry": "Other services",
+      "income_bracket": "$20,000 (personal income, likely lower-income bracket)",
+      "party_affiliation": "Moderate-leaning independent",
+      "ideology": "Moderate-leaning independent",
+      "top_issues": [
+        "Cost of living",
+        "Job security",
+        "Healthcare access",
+        "Inflation"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "Social media (Facebook, YouTube)",
+        "Talk radio"
+      ],
       "institutional_trust": {
-        "government": "medium",
-        "media": "medium",
-        "experts": "medium"
+        "government": "Low",
+        "media": "Mixed to low",
+        "experts": "Moderate"
       },
-      "personal_stake": "Wants her adult children to have private medical autonomy.",
-      "segment_tags": ["asian_american_voters", "suburban_women", "college_educated", "independents"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "associate_s_degree",
+        "other_services",
+        "production__transportation__and_material_moving",
+        "moderate_leaning_independent"
+      ],
+      "representation_pct": 29.35,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "worker_class",
+          "occupation_group",
+          "industry",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic and occupational data, moderate for inferred civic and attitudinal traits.",
+        "pums_sample": {
+          "sample_id": "pums_sample_5",
+          "decoded_record": {
+            "age": 33,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Associate's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Production, transportation, and material moving",
+            "industry": "Other services",
+            "personal_income": 20000,
+            "person_weight": 81,
+            "raw_codes": {
+              "AGEP": "33",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "19",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "9645",
+              "INDP": "4971",
+              "PINCP": "20000",
+              "PWGTP": "81"
+            }
+          },
+          "person_weight": 81
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     },
     {
-      "persona_id": "omar_minneapolis",
-      "name": "Omar",
-      "age": 31,
+      "persona_id": "calif_pums6_15yF_hisp",
+      "name": "Sofia M.",
+      "age": 15,
       "location": {
-        "city": "Minneapolis",
-        "state": "MN",
-        "geo_type": "urban"
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
       },
-      "race_ethnicity": "Somali American",
-      "education": "Bachelor's degree",
-      "occupation": "Nonprofit case manager",
-      "industry": "Social services",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Democrat",
-      "ideology": "Progressive",
-      "top_issues": ["housing", "immigrant communities", "healthcare"],
-      "media_diet": ["local public radio", "WhatsApp", "Twitter/X"],
+      "race_ethnicity": "Hispanic or Latino",
+      "education": "Less than high school",
+      "occupation": "N/A (minor, presumed student)",
+      "industry": "Not in labor force (student/teen)",
+      "income_bracket": "$1-$9,999 (estimated personal income)",
+      "party_affiliation": "Not eligible to vote; leans progressive (inferred from California youth climate and Hispanic identity)",
+      "ideology": "Not eligible to vote; leans progressive (inferred from California youth climate and Hispanic identity)",
+      "top_issues": [
+        "Education quality",
+        "Access to college",
+        "Community safety",
+        "Immigration policy (impact on family/friends)",
+        "Climate change"
+      ],
+      "media_diet": [
+        "TikTok",
+        "Instagram",
+        "YouTube",
+        "Spanish-language TV/radio at home",
+        "School news sources"
+      ],
       "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "medium"
+        "government": "Mixed/Low (inferred: affected by immigration issues)",
+        "media": "Moderate (prefers social media and peers over mainstream news)",
+        "experts": "High (teachers, school staff trusted)"
       },
-      "personal_stake": "Connects healthcare access with dignity for vulnerable families.",
-      "segment_tags": ["young_voters", "immigrant_communities", "urban_voters", "progressives"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "hispanic_or_latino",
+        "less_than_high_school",
+        "not_in_labor_force__student_teen",
+        "n_a__minor__presumed_student",
+        "not_eligible_to_vote__leans_progressive__inferre"
+      ],
+      "representation_pct": 3.62,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "student status (from age)",
+          "media environment (from age + Hispanic background)",
+          "political lean (youth + CA context)"
+        ],
+        "confidence": "High for demographic fields; moderate for social/political inferences.",
+        "pums_sample": {
+          "sample_id": "pums_sample_6",
+          "decoded_record": {
+            "age": 15,
+            "sex": "Female",
+            "race_ethnicity": "Hispanic or Latino",
+            "education": "Less than high school",
+            "employment_status": "Unknown",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": 3600,
+            "person_weight": 10,
+            "raw_codes": {
+              "AGEP": "15",
+              "SEX": "2",
+              "HISP": "02",
+              "RAC1P": "1",
+              "SCHL": "13",
+              "ESR": "0",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "3600",
+              "PWGTP": "10"
+            }
+          },
+          "person_weight": 10
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     },
     {
-      "persona_id": "patty_tampa",
-      "name": "Patty",
-      "age": 44,
-      "location": {
-        "city": "Tampa",
-        "state": "FL",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "White",
-      "education": "Some college",
-      "occupation": "Nurse",
-      "industry": "Healthcare",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Republican",
-      "ideology": "Center-right",
-      "top_issues": ["healthcare", "schools", "cost of living"],
-      "media_diet": ["local TV", "Facebook", "Fox News"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "low",
-        "experts": "high"
-      },
-      "personal_stake": "Has seen complicated pregnancies and worries about politicians writing medical rules.",
-      "segment_tags": ["suburban_women", "moderate_republicans", "healthcare_workers"]
-    },
-    {
-      "persona_id": "doug_bismarck",
-      "name": "Doug",
-      "age": 58,
-      "location": {
-        "city": "Bismarck",
-        "state": "ND",
-        "geo_type": "rural"
-      },
-      "race_ethnicity": "White",
-      "education": "High school",
-      "occupation": "Farm equipment dealer",
-      "industry": "Agriculture",
-      "income_bracket": "$100k-$150k",
-      "party_affiliation": "Republican",
-      "ideology": "Conservative",
-      "top_issues": ["farm costs", "federal regulation", "religious values"],
-      "media_diet": ["AM radio", "Fox News", "local paper"],
-      "institutional_trust": {
-        "government": "very low",
-        "media": "low",
-        "experts": "low"
-      },
-      "personal_stake": "Believes state voters should decide moral policy through elections.",
-      "segment_tags": ["rural_men", "republican_base", "agriculture_voters", "older_voters"]
-    },
-    {
-      "persona_id": "grace_raleigh",
-      "name": "Grace",
-      "age": 27,
-      "location": {
-        "city": "Raleigh",
-        "state": "NC",
-        "geo_type": "suburban"
-      },
-      "race_ethnicity": "White",
-      "education": "Bachelor's degree",
-      "occupation": "Software QA analyst",
-      "industry": "Technology",
-      "income_bracket": "$75k-$100k",
-      "party_affiliation": "Independent",
-      "ideology": "Socially liberal moderate",
-      "top_issues": ["reproductive rights", "housing", "competence"],
-      "media_diet": ["Reddit", "NPR", "TikTok"],
-      "institutional_trust": {
-        "government": "medium",
-        "media": "medium",
-        "experts": "high"
-      },
-      "personal_stake": "Worries about starting a family in a state with uncertain medical rules.",
-      "segment_tags": ["young_voters", "suburban_women", "college_educated", "independents"]
-    },
-    {
-      "persona_id": "ron_cleveland",
-      "name": "Ron",
-      "age": 62,
-      "location": {
-        "city": "Cleveland",
-        "state": "OH",
-        "geo_type": "urban"
-      },
-      "race_ethnicity": "Black",
-      "education": "Trade school",
-      "occupation": "Bus maintenance mechanic",
-      "industry": "Transit",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Democrat",
-      "ideology": "Moderate",
-      "top_issues": ["retirement", "wages", "healthcare"],
-      "media_diet": ["local TV", "sports radio", "Facebook"],
-      "institutional_trust": {
-        "government": "low",
-        "media": "medium",
-        "experts": "medium"
-      },
-      "personal_stake": "Thinks private family healthcare decisions should not be turned into political theater.",
-      "segment_tags": ["black_voters", "union_household", "older_voters", "urban_voters"]
-    },
-    {
-      "persona_id": "emily_grand_rapids",
-      "name": "Emily",
+      "persona_id": "ca_sampled_persona_7",
+      "name": "Ethan Ross",
       "age": 34,
       "location": {
-        "city": "Grand Rapids",
-        "state": "MI",
-        "geo_type": "suburban"
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
       },
-      "race_ethnicity": "White",
+      "race_ethnicity": "White alone",
       "education": "Bachelor's degree",
-      "occupation": "Church preschool director",
-      "industry": "Education",
-      "income_bracket": "$50k-$75k",
-      "party_affiliation": "Republican",
-      "ideology": "Religious conservative",
-      "top_issues": ["faith", "children", "cost of living"],
-      "media_diet": ["church groups", "local TV", "Facebook"],
+      "occupation": "Management, business, science, and arts",
+      "industry": "Manufacturing",
+      "income_bracket": "$50,000-$74,999",
+      "party_affiliation": "Moderate leaning Democratic",
+      "ideology": "Moderate leaning Democratic",
+      "top_issues": [
+        "Economic opportunity and job stability",
+        "Healthcare costs",
+        "Environmental policies impacting industry",
+        "Affordable housing"
+      ],
+      "media_diet": [
+        "Online news (e.g., LA Times, NPR)",
+        "Podcasts",
+        "Mainstream TV news",
+        "Social media (LinkedIn, Twitter)"
+      ],
       "institutional_trust": {
-        "government": "low",
-        "media": "low",
-        "experts": "medium"
+        "government": "Mixed",
+        "media": "Moderate",
+        "experts": "High"
       },
-      "personal_stake": "Morally supports abortion restrictions but worries about extreme medical cases.",
-      "segment_tags": ["evangelicals", "suburban_women", "republican_base", "parents"]
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "bachelor_s_degree",
+        "manufacturing",
+        "management__business__science__and_arts",
+        "moderate_leaning_democratic"
+      ],
+      "representation_pct": 6.88,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "worker_class",
+          "occupation_group",
+          "industry",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for Census variables, moderate for inferred variables due to appropriate demographic and regional synthesis.",
+        "pums_sample": {
+          "sample_id": "pums_sample_7",
+          "decoded_record": {
+            "age": 34,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Bachelor's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Management, business, science, and arts",
+            "industry": "Manufacturing",
+            "personal_income": 61500,
+            "person_weight": 19,
+            "raw_codes": {
+              "AGEP": "34",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "21",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "1021",
+              "INDP": "3390",
+              "PINCP": "61500",
+              "PWGTP": "19"
+            }
+          },
+          "person_weight": 19
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA-2024-pums8",
+      "name": "Ethan Miller",
+      "age": 24,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Bachelor's degree",
+      "occupation": "Sales and office",
+      "industry": "Other services",
+      "income_bracket": "$50,000-$74,999",
+      "party_affiliation": "Leans liberal",
+      "ideology": "Leans liberal",
+      "top_issues": [
+        "Affordable housing",
+        "Climate action",
+        "Job opportunities and wage growth",
+        "Cost of college/student debt"
+      ],
+      "media_diet": [
+        "Social media (Instagram, TikTok, Twitter)",
+        "Online news (Vox, HuffPost, LA Times)",
+        "YouTube",
+        "Podcasts"
+      ],
+      "institutional_trust": {
+        "government": "Moderate",
+        "media": "Low to moderate",
+        "experts": "Moderate"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "bachelor_s_degree",
+        "other_services",
+        "sales_and_office",
+        "leans_liberal"
+      ],
+      "representation_pct": 7.61,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SCHL",
+          "SEX",
+          "RAC1P",
+          "OCCP",
+          "INDP",
+          "PINCP",
+          "COW"
+        ],
+        "inferred_fields": [
+          "name",
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust",
+          "household_income bracket from reported income"
+        ],
+        "confidence": "High for Census-coded variables; moderate for inferences based on consistent sociodemographic research patterns in California.",
+        "pums_sample": {
+          "sample_id": "pums_sample_8",
+          "decoded_record": {
+            "age": 24,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Bachelor's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Sales and office",
+            "industry": "Other services",
+            "personal_income": 50700,
+            "person_weight": 21,
+            "raw_codes": {
+              "AGEP": "24",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "21",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "4720",
+              "INDP": "8590",
+              "PINCP": "50700",
+              "PWGTP": "21"
+            }
+          },
+          "person_weight": 21
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "pums_sample_9",
+      "name": "Mr. Anthony Lee",
+      "age": 38,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "High school graduate",
+      "occupation": "Production, transportation, and material moving",
+      "industry": "Other services",
+      "income_bracket": "$15,000",
+      "party_affiliation": "Leans moderate, with pragmatic views on economic opportunity and small business support",
+      "ideology": "Leans moderate, with pragmatic views on economic opportunity and small business support",
+      "top_issues": [
+        "Small business recovery and support",
+        "Affordable health care access",
+        "Cost of living and affordable housing",
+        "Infrastructure improvements"
+      ],
+      "media_diet": [
+        "Local ethnic news outlets (e.g., Asian-language newspapers/online)",
+        "Mainstream online news (e.g., Google News, Yahoo)",
+        "YouTube for small business and practical how-to content"
+      ],
+      "institutional_trust": {
+        "government": "Neutral to somewhat skeptical, prefers practical solutions over politics",
+        "media": "Mixed trust; more trust in ethnic and community-oriented sources",
+        "experts": "Generally positive, especially on practical business-related topics"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "high_school_graduate",
+        "other_services",
+        "production__transportation__and_material_moving",
+        "leans_moderate__with_pragmatic_views_on_economic"
+      ],
+      "representation_pct": 12.68,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "personal_income",
+          "occupation",
+          "industry",
+          "worker_class"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic and occupational coherence; moderate for inferred civic and political attributes",
+        "pums_sample": {
+          "sample_id": "pums_sample_9",
+          "decoded_record": {
+            "age": 38,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "High school graduate",
+            "employment_status": "Not in labor force",
+            "worker_class": "Self-employed in own incorporated business",
+            "occupation": "Production, transportation, and material moving",
+            "industry": "Other services",
+            "personal_income": 15000,
+            "person_weight": 35,
+            "raw_codes": {
+              "AGEP": "38",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "16",
+              "ESR": "6",
+              "COW": "6",
+              "OCCP": "9130",
+              "INDP": "5392",
+              "PINCP": "15000",
+              "PWGTP": "35"
+            }
+          },
+          "person_weight": 35
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums_sample_10",
+      "name": "Nathan",
+      "age": 39,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Bachelor's degree",
+      "occupation": "Management, business, science, and arts",
+      "industry": "Construction",
+      "income_bracket": "$75,000-$99,999",
+      "party_affiliation": "Moderate-conservative",
+      "ideology": "Moderate-conservative",
+      "top_issues": [
+        "Housing affordability",
+        "Cost of living",
+        "Business regulation",
+        "Infrastructure spending"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "YouTube",
+        "Talk radio",
+        "Mainstream news websites"
+      ],
+      "institutional_trust": {
+        "government": "Moderate-low",
+        "media": "Low",
+        "experts": "Moderate"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "bachelor_s_degree",
+        "construction",
+        "management__business__science__and_arts",
+        "moderate_conservative"
+      ],
+      "representation_pct": 8.34,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "worker_class",
+          "income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic and economic fields; political/values inference is moderate based on literature and ACS state profile context.",
+        "pums_sample": {
+          "sample_id": "pums_sample_10",
+          "decoded_record": {
+            "age": 39,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Bachelor's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Management, business, science, and arts",
+            "industry": "Construction",
+            "personal_income": 78000,
+            "person_weight": 23,
+            "raw_codes": {
+              "AGEP": "39",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "21",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "1050",
+              "INDP": "0770",
+              "PINCP": "78000",
+              "PWGTP": "23"
+            }
+          },
+          "person_weight": 23
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
     }
   ]
 }
-

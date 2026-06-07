@@ -34,6 +34,15 @@ def _parse_int(value: str | int | None, default: int) -> int:
         return default
 
 
+def _parse_path(value: str | None, default: Path) -> Path:
+    if not value:
+        return default
+    path = Path(value).expanduser()
+    if path.is_absolute():
+        return path
+    return (REPO_ROOT / path).resolve()
+
+
 def _read_env_file(path: Path) -> dict[str, str]:
     if not path.exists():
         return {}
@@ -63,6 +72,7 @@ def _load_env() -> dict[str, str]:
 @dataclass(frozen=True)
 class Settings:
     openai_api_key: str | None
+    census_api_key: str | None
     anthropic_api_key: str | None
     gemini_api_key: str | None
     openrouter_api_key: str | None
@@ -75,6 +85,7 @@ class Settings:
     demo_mode: bool
     persona_count: int
     persona_concurrency_limit: int
+    pums_data_dir: Path
     copilot_runtime_url: str
 
     @classmethod
@@ -82,6 +93,7 @@ class Settings:
         env = _load_env()
         return cls(
             openai_api_key=env.get("OPENAI_API_KEY") or None,
+            census_api_key=env.get("CENSUS_API_KEY") or None,
             anthropic_api_key=env.get("ANTHROPIC_API_KEY") or None,
             gemini_api_key=env.get("GEMINI_API_KEY") or None,
             openrouter_api_key=env.get("OPENROUTER_API_KEY") or None,
@@ -94,12 +106,14 @@ class Settings:
             demo_mode=_parse_bool(env.get("DEMO_MODE"), default=True),
             persona_count=_parse_int(env.get("PERSONA_COUNT"), default=20),
             persona_concurrency_limit=_parse_int(env.get("PERSONA_CONCURRENCY_LIMIT"), default=25),
+            pums_data_dir=_parse_path(env.get("PUMS_DATA_DIR"), REPO_ROOT / "data" / "pums"),
             copilot_runtime_url=(env.get("COPILOT_RUNTIME_URL") or "http://localhost:3001").rstrip("/"),
         )
 
     def missing_required(self) -> list[str]:
         required = {
             "OPENAI_API_KEY": self.openai_api_key,
+            "CENSUS_API_KEY": self.census_api_key,
             "ANTHROPIC_API_KEY": self.anthropic_api_key,
             "GEMINI_API_KEY": self.gemini_api_key,
             "OPENROUTER_API_KEY": self.openrouter_api_key,
@@ -143,6 +157,7 @@ class Settings:
     def safe_startup_summary(self) -> str:
         provider_lines = [
             f"- OpenAI: {'configured' if self.openai_api_key else 'missing'}",
+            f"- Census: {'configured' if self.census_api_key else 'missing'}",
             f"- Anthropic: {'configured' if self.anthropic_api_key else 'missing'}",
             f"- Gemini: {'configured' if self.gemini_api_key else 'missing'}",
             f"- OpenRouter: {'configured' if self.openrouter_api_key else 'missing'}",
@@ -158,7 +173,8 @@ class Settings:
             f"- BACKEND_ENV: {self.backend_env}\n"
             f"- DEMO_MODE: {str(self.demo_mode).lower()}\n"
             f"- PERSONA_COUNT: {self.persona_count}\n"
-            f"- PERSONA_CONCURRENCY_LIMIT: {self.persona_concurrency_limit}\n\n"
+            f"- PERSONA_CONCURRENCY_LIMIT: {self.persona_concurrency_limit}\n"
+            f"- PUMS_DATA_DIR: {self.pums_data_dir}\n\n"
             "Providers:\n"
             + "\n".join(provider_lines)
             + "\n\nMemory:\n"
