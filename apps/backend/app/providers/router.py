@@ -18,7 +18,7 @@ PROVIDER_MODELS = {
     "openai": "gpt-4o-mini",
     "anthropic": "claude-haiku-4-5-20251001",
     "gemini": "gemini-2.5-flash",
-    "openrouter": "openai/gpt-4o-mini",
+    "openrouter": "meta-llama/llama-3.3-70b-instruct",
 }
 
 # Temporary credit-saving mode: route demo persona traffic to OpenAI first.
@@ -52,27 +52,47 @@ class ProviderRouter:
     def configured_provider_names(self) -> list[str]:
         return list(self.providers.keys())
 
-    def assign_personas(self, personas: list[Persona]) -> list[Persona]:
-        total = len(personas)
-        if total == 20:
-            plan = FULL_DEMO_PROVIDER_PLAN
-        elif total <= 3:
-            plan = SMOKE_PROVIDER_PLAN[:total]
+    def assign_personas(
+        self,
+        personas: list[Persona],
+        providers: list[str] | None = None,
+        model_overrides: dict[str, str] | None = None,
+    ) -> list[Persona]:
+        # Honor a caller-supplied provider pool (from the Settings page), falling back to the
+        # credit-saving default of routing everything through OpenAI.
+        requested = [name for name in (providers or []) if name in self.providers]
+        if requested:
+            pool = requested
+        elif "openai" in self.providers:
+            pool = ["openai"]
         else:
-            plan = ["openai"] * total
+            pool = self.configured_provider_names() or ["openai"]
 
+        overrides = model_overrides or {}
         assigned: list[Persona] = []
         for index, persona in enumerate(personas):
-            provider_name = plan[index % len(plan)]
+            provider_name = pool[index % len(pool)]
+            model = overrides.get(provider_name) or PROVIDER_MODELS.get(provider_name, "")
             assigned.append(
                 persona.model_copy(
                     update={
                         "assigned_provider": provider_name,
-                        "assigned_model": PROVIDER_MODELS[provider_name],
+                        "assigned_model": model,
                     }
                 )
             )
         return assigned
+
+    def available_models(self) -> list[dict[str, object]]:
+        """Provider catalog for the Settings page: default model + whether a key is configured."""
+        return [
+            {
+                "id": name,
+                "default_model": model,
+                "configured": name in self.providers,
+            }
+            for name, model in PROVIDER_MODELS.items()
+        ]
 
     def _candidate_providers(self, preferred_provider: str | None) -> list[str]:
         ordered: list[str] = []

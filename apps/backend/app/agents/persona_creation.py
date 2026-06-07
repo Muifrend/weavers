@@ -51,19 +51,27 @@ class PersonaCreationAgent:
         profile = result.get("population_profile") if isinstance(result.get("population_profile"), dict) else {}
         personas = [adapt_pipeline_persona(item, profile, index) for index, item in enumerate(raw_personas, start=1)]
 
+        location_name = str(profile.get("raw_name") or request.location)
+
         saved_path = None
+        set_id = None
+        set_label = None
         if request.persist:
-            self.store.save_personas(personas)
-            saved_path = str(self.store.personas_path)
+            set_label = request.set_label or f"{location_name} · {len(personas)}"
+            metadata = self.store.save_persona_set(personas, label=set_label, location=location_name)
+            set_id = metadata["set_id"]
+            saved_path = str(self.store.sets_dir / f"{set_id}.json")
 
         return PersonaGenerationResponse(
             status="complete" if len(personas) == request.persona_count and result.get("status") == "complete" else "partial",
-            location=str(profile.get("raw_name") or request.location),
+            location=location_name,
             personas=personas,
             representation_total_pct=round(sum(persona.representation_pct or 0 for persona in personas), 2),
             demographic_priors=profile.get("demographic_priors") if isinstance(profile.get("demographic_priors"), dict) else {},
             population_context=profile.get("population_context") if isinstance(profile.get("population_context"), dict) else {},
             saved_path=saved_path,
+            set_id=set_id,
+            set_label=set_label,
             warnings=warnings,
         )
 

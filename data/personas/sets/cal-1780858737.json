@@ -1,0 +1,1924 @@
+{
+  "set_id": "cal-1780858737",
+  "label": "Cal",
+  "location": "California",
+  "persona_count": 20,
+  "created_at": 1780858737.0428467,
+  "representation_total_pct": 100.0,
+  "personas": [
+    {
+      "persona_id": "CA_pums_1",
+      "name": "Brian Lee",
+      "age": 25,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "Associate's degree",
+      "occupation": "Service",
+      "industry": "Other services",
+      "income_bracket": "$35,000-$49,999",
+      "party_affiliation": "Leans Democratic, moderate",
+      "ideology": "Leans Democratic, moderate",
+      "top_issues": [
+        "Affordable housing",
+        "Education funding",
+        "Healthcare access",
+        "Job opportunities for young adults"
+      ],
+      "media_diet": [
+        "YouTube",
+        "Instagram",
+        "Online news outlets",
+        "Cultural/ethnic media"
+      ],
+      "institutional_trust": {
+        "government": "Moderate",
+        "media": "Low to moderate",
+        "experts": "Moderate"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "associate_s_degree",
+        "other_services",
+        "service",
+        "leans_democratic__moderate"
+      ],
+      "representation_pct": 2.22,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "worker_class",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic and employment details; moderate for inferred political/social attitudes.",
+        "pums_sample": {
+          "sample_id": "pums_sample_1",
+          "decoded_record": {
+            "age": 25,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "Associate's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Service",
+            "industry": "Other services",
+            "personal_income": 45000,
+            "person_weight": 19,
+            "raw_codes": {
+              "AGEP": "25",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "19",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "3421",
+              "INDP": "5071",
+              "PINCP": "45000",
+              "PWGTP": "19"
+            }
+          },
+          "person_weight": 19
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums_sample_2",
+      "name": "Emma Torres",
+      "age": 11,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Two or more races",
+      "education": "Less than high school",
+      "occupation": "Not in workforce (child)",
+      "industry": "Not in workforce (child)",
+      "income_bracket": "Not applicable / no earned personal income",
+      "party_affiliation": "Views developing / family influenced (likely moderate, with family input)",
+      "ideology": "Views developing / family influenced (likely moderate, with family input)",
+      "top_issues": [
+        "Education quality and school resources",
+        "Bullying and school safety",
+        "Climate change and environment (school discussions)",
+        "Public health (COVID-19, vaccines in schools)",
+        "Access to extracurriculars (sports, arts)"
+      ],
+      "media_diet": [
+        "YouTube",
+        "TikTok",
+        "Streaming platforms (e.g., Netflix, Disney+)",
+        "School-based digital content",
+        "Occasional family television news"
+      ],
+      "institutional_trust": {
+        "government": "Limited direct awareness; defaults to parental/community attitudes",
+        "media": "Mostly neutral, trusts content platforms; parental oversight",
+        "experts": "High trust, especially teachers and doctors"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "two_or_more_races",
+        "less_than_high_school",
+        "not_in_workforce__child",
+        "not_in_workforce__child",
+        "views_developing___family_influenced__likely_mod"
+      ],
+      "representation_pct": 4.08,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SEX",
+          "RAC1P",
+          "SCHL"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic fields; moderate for inferred attitudes and media use",
+        "pums_sample": {
+          "sample_id": "pums_sample_2",
+          "decoded_record": {
+            "age": 11,
+            "sex": "Female",
+            "race_ethnicity": "Two or more races",
+            "education": "Less than high school",
+            "employment_status": "Unknown",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": -19999,
+            "person_weight": 35,
+            "raw_codes": {
+              "AGEP": "11",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "9",
+              "SCHL": "8",
+              "ESR": "0",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "-19999",
+              "PWGTP": "35"
+            }
+          },
+          "person_weight": 35
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_PUMS_p3",
+      "name": "Samuel Wong",
+      "age": 63,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "High school graduate",
+      "occupation": "Natural resources, construction, and maintenance",
+      "industry": "Manufacturing (prior experience)",
+      "income_bracket": "$0 (currently unemployed)",
+      "party_affiliation": "Leans moderate; pragmatic stance with focus on economic recovery and stability",
+      "ideology": "Leans moderate; pragmatic stance with focus on economic recovery and stability",
+      "top_issues": [
+        "Job opportunities for older workers",
+        "Healthcare access and affordability",
+        "Retirement security",
+        "Economic stability in manufacturing sector"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "Ethnic/community newspapers",
+        "Major network news"
+      ],
+      "institutional_trust": {
+        "government": "Mixed (favors practical solutions, skepticism of bureaucracy)",
+        "media": "Trusts local and ethnic media, skeptical of national media",
+        "experts": "Generally trusts experts, especially in health and economics"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "high_school_graduate",
+        "manufacturing__prior_experience",
+        "natural_resources__construction__and_maintenance",
+        "leans_moderate__pragmatic_stance_with_focus_on_e"
+      ],
+      "representation_pct": 1.28,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation_group",
+          "worker_class",
+          "employment_status"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "detailed trust levels"
+        ],
+        "confidence": "High for demographic/cohort variables; moderate for inferred sociopolitical characteristics, based on research/literature trends in comparable populations.",
+        "pums_sample": {
+          "sample_id": "pums_sample_3",
+          "decoded_record": {
+            "age": 63,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "High school graduate",
+            "employment_status": "Unemployed",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Natural resources, construction, and maintenance",
+            "industry": "Manufacturing",
+            "personal_income": 0,
+            "person_weight": 11,
+            "raw_codes": {
+              "AGEP": "63",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "16",
+              "ESR": "3",
+              "COW": "1",
+              "OCCP": "7750",
+              "INDP": "3580",
+              "PINCP": "0",
+              "PWGTP": "11"
+            }
+          },
+          "person_weight": 11
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums_synth_4",
+      "name": "Marisol Reyes",
+      "age": 39,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Hispanic or Latino",
+      "education": "High school graduate",
+      "occupation": "Sales and office",
+      "industry": "Manufacturing",
+      "income_bracket": "$24,000",
+      "party_affiliation": "Leans Democratic, pragmatic on economic issues",
+      "ideology": "Leans Democratic, pragmatic on economic issues",
+      "top_issues": [
+        "Jobs and wages",
+        "Healthcare access",
+        "Workplace safety",
+        "Public education"
+      ],
+      "media_diet": [
+        "Spanish-language TV news (e.g., Univision, Telemundo)",
+        "Local radio",
+        "Facebook community groups"
+      ],
+      "institutional_trust": {
+        "government": "Moderate",
+        "media": "High for local/community outlets, low for national English-language media",
+        "experts": "Moderate"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "hispanic_or_latino",
+        "high_school_graduate",
+        "manufacturing",
+        "sales_and_office",
+        "leans_democratic__pragmatic_on_economic_issues"
+      ],
+      "representation_pct": 0.93,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "personal_income",
+          "industry",
+          "occupation",
+          "worker_class"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic and economic fields; Reasonable for inferred fields, based on public polling and scholarly research on similar Californians.",
+        "pums_sample": {
+          "sample_id": "pums_sample_4",
+          "decoded_record": {
+            "age": 39,
+            "sex": "Female",
+            "race_ethnicity": "Hispanic or Latino",
+            "education": "High school graduate",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Sales and office",
+            "industry": "Manufacturing",
+            "personal_income": 24000,
+            "person_weight": 8,
+            "raw_codes": {
+              "AGEP": "39",
+              "SEX": "2",
+              "HISP": "02",
+              "RAC1P": "8",
+              "SCHL": "16",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "4720",
+              "INDP": "1270",
+              "PINCP": "24000",
+              "PWGTP": "8"
+            }
+          },
+          "person_weight": 8
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "ca_pums_5",
+      "name": "Sophia",
+      "age": 11,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Less than high school",
+      "occupation": "Not applicable (child, no occupation)",
+      "industry": "Not in labor force (child, no employment)",
+      "income_bracket": "Not applicable (individual under 15; personal income coded as -19999 in PUMS sample)",
+      "party_affiliation": "Too young to identify",
+      "ideology": "Too young to identify",
+      "top_issues": [
+        "School quality",
+        "Access to after-school programs",
+        "Community safety"
+      ],
+      "media_diet": [
+        "Social media platforms (e.g., YouTube, TikTok for kids)",
+        "Streaming video (children's content)",
+        "School-based media"
+      ],
+      "institutional_trust": {
+        "government": "Limited awareness (age-appropriate)",
+        "media": "High trust in family-approved or child-targeted media",
+        "experts": "High trust in teachers and adults"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "less_than_high_school",
+        "not_in_labor_force__child__no_employment",
+        "not_applicable__child__no_occupation",
+        "too_young_to_identify"
+      ],
+      "representation_pct": 6.3,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SEX",
+          "SCHL",
+          "RAC1P"
+        ],
+        "inferred_fields": [
+          "media_environment",
+          "top_issues",
+          "institutional_trust",
+          "political_view"
+        ],
+        "confidence": "High on core demographics, medium on narrative inferences",
+        "pums_sample": {
+          "sample_id": "pums_sample_5",
+          "decoded_record": {
+            "age": 11,
+            "sex": "Female",
+            "race_ethnicity": "White alone",
+            "education": "Less than high school",
+            "employment_status": "Unknown",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": -19999,
+            "person_weight": 54,
+            "raw_codes": {
+              "AGEP": "11",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "7",
+              "ESR": "0",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "-19999",
+              "PWGTP": "54"
+            }
+          },
+          "person_weight": 54
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "pums_CA_6",
+      "name": "Michael R.",
+      "age": 39,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Graduate or professional degree",
+      "occupation": "Management, business, science, and arts",
+      "industry": "Educational services, health care, and social assistance",
+      "income_bracket": "$100k-$149k",
+      "party_affiliation": "Moderate liberal",
+      "ideology": "Moderate liberal",
+      "top_issues": [
+        "Education funding",
+        "Healthcare access",
+        "Public employee pensions",
+        "Climate change policy",
+        "Affordable housing"
+      ],
+      "media_diet": [
+        "NPR",
+        "The New York Times",
+        "Los Angeles Times",
+        "CNN",
+        "Public Radio"
+      ],
+      "institutional_trust": {
+        "government": "High (local/state)",
+        "media": "Moderate",
+        "experts": "High"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "graduate_or_professional_degree",
+        "educational_services__health_care__and_social_as",
+        "management__business__science__and_arts",
+        "moderate_liberal"
+      ],
+      "representation_pct": 1.4,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "household_income",
+          "employed_sector",
+          "occupation_group",
+          "worker_class"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic fields, moderate for inferred attitudinal/political fields",
+        "pums_sample": {
+          "sample_id": "pums_sample_6",
+          "decoded_record": {
+            "age": 39,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Graduate or professional degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Local government worker",
+            "occupation": "Management, business, science, and arts",
+            "industry": "Educational services, health care, and social assistance",
+            "personal_income": 130000,
+            "person_weight": 12,
+            "raw_codes": {
+              "AGEP": "39",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "24",
+              "ESR": "1",
+              "COW": "3",
+              "OCCP": "0230",
+              "INDP": "7860",
+              "PINCP": "130000",
+              "PWGTP": "12"
+            }
+          },
+          "person_weight": 12
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "ca_pums7_demo1",
+      "name": "Erik R.",
+      "age": 18,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Hispanic or Latino",
+      "education": "Less than high school",
+      "occupation": "Not in labor force",
+      "industry": "Not in labor force",
+      "income_bracket": "$0-$24,999",
+      "party_affiliation": "Leans Democratic, but likely low political engagement",
+      "ideology": "Leans Democratic, but likely low political engagement",
+      "top_issues": [
+        "Education access and affordability",
+        "Job opportunities for youth",
+        "Immigration and community safety",
+        "Affordable housing"
+      ],
+      "media_diet": [
+        "Social media (TikTok, Instagram)",
+        "YouTube",
+        "Occasional Spanish-language broadcast TV"
+      ],
+      "institutional_trust": {
+        "government": "Low to moderate (inferred from youth/Hispanic data)",
+        "media": "Moderate-trusting of social and community-specific sources",
+        "experts": "Moderate (school, medical/immigration experts somewhat respected)"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "hispanic_or_latino",
+        "less_than_high_school",
+        "not_in_labor_force",
+        "not_in_labor_force",
+        "leans_democratic__but_likely_low_political_engag"
+      ],
+      "representation_pct": 2.33,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "employment_status",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic/economic data; medium for inferred fields.",
+        "pums_sample": {
+          "sample_id": "pums_sample_7",
+          "decoded_record": {
+            "age": 18,
+            "sex": "Male",
+            "race_ethnicity": "Hispanic or Latino",
+            "education": "Less than high school",
+            "employment_status": "Not in labor force",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": 0,
+            "person_weight": 20,
+            "raw_codes": {
+              "AGEP": "18",
+              "SEX": "1",
+              "HISP": "02",
+              "RAC1P": "9",
+              "SCHL": "14",
+              "ESR": "6",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "0",
+              "PWGTP": "20"
+            }
+          },
+          "person_weight": 20
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA-pums8",
+      "name": "Alex Chen",
+      "age": 13,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "Less than high school",
+      "occupation": "N/A (not in labor force)",
+      "industry": "N/A (not in labor force)",
+      "income_bracket": "Unknown (child, not primary earner)",
+      "party_affiliation": "Inferred: Not yet politically active, potential influence from family/community",
+      "ideology": "Inferred: Not yet politically active, potential influence from family/community",
+      "top_issues": [
+        "Education quality",
+        "School safety",
+        "Anti-bullying",
+        "Access to technology"
+      ],
+      "media_diet": [
+        "Online video platforms (YouTube, TikTok)",
+        "Social media",
+        "School curriculum",
+        "Family discussions"
+      ],
+      "institutional_trust": {
+        "government": "Inferred: Moderate (school-aged children often influenced by teachers/parents)",
+        "media": "Inferred: High exposure, variable trust (per age group trends)",
+        "experts": "Inferred: Moderate-high (trusts teachers/authority figures)"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "less_than_high_school",
+        "n_a__not_in_labor_force",
+        "n_a__not_in_labor_force",
+        "inferred__not_yet_politically_active__potential_"
+      ],
+      "representation_pct": 13.89,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust",
+          "household_income (not respondent's)"
+        ],
+        "confidence": "High for core demographics; moderate for inferred fields based on age and state trends",
+        "pums_sample": {
+          "sample_id": "pums_sample_8",
+          "decoded_record": {
+            "age": 13,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "Less than high school",
+            "employment_status": "Unknown",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": -19999,
+            "person_weight": 119,
+            "raw_codes": {
+              "AGEP": "13",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "10",
+              "ESR": "0",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "-19999",
+              "PWGTP": "119"
+            }
+          },
+          "person_weight": 119
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA-PUMS9",
+      "name": "John",
+      "age": 34,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "High school graduate",
+      "occupation": "Production, transportation, and material moving",
+      "industry": "Other services",
+      "income_bracket": "$33,100",
+      "party_affiliation": "Moderate-conservative",
+      "ideology": "Moderate-conservative",
+      "top_issues": [
+        "Cost of living",
+        "Job security",
+        "Healthcare affordability",
+        "Homelessness"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "Talk radio",
+        "Facebook",
+        "YouTube"
+      ],
+      "institutional_trust": {
+        "government": "Low-medium",
+        "media": "Low",
+        "experts": "Moderate"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "high_school_graduate",
+        "other_services",
+        "production__transportation__and_material_moving",
+        "moderate_conservative"
+      ],
+      "representation_pct": 3.15,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SEX",
+          "RAC1P",
+          "SCHL",
+          "PINCP",
+          "COW",
+          "OCCP",
+          "INDP"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High (demographic/employment from PUMS), Moderate (inferences)",
+        "pums_sample": {
+          "sample_id": "pums_sample_9",
+          "decoded_record": {
+            "age": 34,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "High school graduate",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Production, transportation, and material moving",
+            "industry": "Other services",
+            "personal_income": 33100,
+            "person_weight": 27,
+            "raw_codes": {
+              "AGEP": "34",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "16",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "9645",
+              "INDP": "5392",
+              "PINCP": "33100",
+              "PWGTP": "27"
+            }
+          },
+          "person_weight": 27
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums10",
+      "name": "Denise Robinson",
+      "age": 55,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Black or African American alone",
+      "education": "High school graduate",
+      "occupation": "Sales and office",
+      "industry": "Educational services, health care, and social assistance",
+      "income_bracket": "$50,000-$74,999",
+      "party_affiliation": "Leans Democratic",
+      "ideology": "Leans Democratic",
+      "top_issues": [
+        "Affordable health care",
+        "Educational funding",
+        "Cost of living",
+        "Retirement security"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "Social media (e.g., Facebook)",
+        "Mainstream news websites (e.g., CNN, NBC)"
+      ],
+      "institutional_trust": {
+        "government": "Moderate",
+        "media": "Varied",
+        "experts": "Generally positive"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "black_or_african_american_alone",
+        "high_school_graduate",
+        "educational_services__health_care__and_social_as",
+        "sales_and_office",
+        "leans_democratic"
+      ],
+      "representation_pct": 6.07,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "worker_class",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High on encoded fields; medium on inferred traits.",
+        "pums_sample": {
+          "sample_id": "pums_sample_10",
+          "decoded_record": {
+            "age": 55,
+            "sex": "Female",
+            "race_ethnicity": "Black or African American alone",
+            "education": "High school graduate",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Sales and office",
+            "industry": "Educational services, health care, and social assistance",
+            "personal_income": 59000,
+            "person_weight": 52,
+            "raw_codes": {
+              "AGEP": "55",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "2",
+              "SCHL": "17",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "5820",
+              "INDP": "8370",
+              "PINCP": "59000",
+              "PWGTP": "52"
+            }
+          },
+          "person_weight": 52
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "pums_sample_11",
+      "name": "Dr. David Lee",
+      "age": 55,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "Graduate or professional degree",
+      "occupation": "Management, business, science, and arts",
+      "industry": "Professional, scientific, management, administrative, and waste management services",
+      "income_bracket": "$150k-$199k",
+      "party_affiliation": "Lean Democratic, pro-science",
+      "ideology": "Lean Democratic, pro-science",
+      "top_issues": [
+        "Science-based policy",
+        "Climate change",
+        "Education funding",
+        "Healthcare access",
+        "Economic growth"
+      ],
+      "media_diet": [
+        "NPR",
+        "The New York Times",
+        "Los Angeles Times",
+        "Science and technology news sources"
+      ],
+      "institutional_trust": {
+        "government": "Medium",
+        "media": "Medium-High",
+        "experts": "High"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "graduate_or_professional_degree",
+        "professional__scientific__management__administra",
+        "management__business__science__and_arts",
+        "lean_democratic__pro_science"
+      ],
+      "representation_pct": 1.17,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "personal_income",
+          "worker_class"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "Demographics and employment are direct; political/issue/media attributes are moderate-confidence, inferred from aggregate literature and not individualized.",
+        "pums_sample": {
+          "sample_id": "pums_sample_11",
+          "decoded_record": {
+            "age": 55,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "Graduate or professional degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Management, business, science, and arts",
+            "industry": "Professional, scientific, management, administrative, and waste management services",
+            "personal_income": 175000,
+            "person_weight": 10,
+            "raw_codes": {
+              "AGEP": "55",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "22",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "1530",
+              "INDP": "7460",
+              "PINCP": "175000",
+              "PWGTP": "10"
+            }
+          },
+          "person_weight": 10
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_2024_pums12",
+      "name": "Samantha C.",
+      "age": 13,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Less than high school",
+      "occupation": "Not employed (child)",
+      "industry": "Not employed (child/student)",
+      "income_bracket": "Not applicable (dependent/child)",
+      "party_affiliation": "Family-influenced, likely not strongly defined (inferred)",
+      "ideology": "Family-influenced, likely not strongly defined (inferred)",
+      "top_issues": [
+        "Education quality",
+        "School safety",
+        "Access to extracurriculars",
+        "Climate/environment (youth concern, inferred)"
+      ],
+      "media_diet": [
+        "Social media platforms (YouTube, TikTok) - inferred",
+        "School environment",
+        "Family and community discussions"
+      ],
+      "institutional_trust": {
+        "government": "Moderate (influenced by family/community attitudes)",
+        "media": "Favors online and peer-shared content (inferred, age-based)",
+        "experts": "Higher trust in teachers/authority at school (inferred)"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "less_than_high_school",
+        "not_employed__child_student",
+        "not_employed__child",
+        "family_influenced__likely_not_strongly_defined__"
+      ],
+      "representation_pct": 6.77,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SEX",
+          "RAC1P",
+          "SCHL"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for Census-labeled fields, medium for inferred views.",
+        "pums_sample": {
+          "sample_id": "pums_sample_12",
+          "decoded_record": {
+            "age": 13,
+            "sex": "Female",
+            "race_ethnicity": "White alone",
+            "education": "Less than high school",
+            "employment_status": "Unknown",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": -19999,
+            "person_weight": 58,
+            "raw_codes": {
+              "AGEP": "13",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "10",
+              "ESR": "0",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "-19999",
+              "PWGTP": "58"
+            }
+          },
+          "person_weight": 58
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums_sample_13",
+      "name": "Judith",
+      "age": 70,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Some college, no degree",
+      "occupation": "Sales and office",
+      "industry": "Educational services, health care, and social assistance",
+      "income_bracket": "$90,000",
+      "party_affiliation": "Moderate liberal",
+      "ideology": "Moderate liberal",
+      "top_issues": [
+        "Medicare and healthcare access",
+        "Cost of living/retirement security",
+        "Education funding",
+        "Women's rights"
+      ],
+      "media_diet": [
+        "Local television news",
+        "NPR",
+        "Online news (e.g., NY Times, LA Times)",
+        "Facebook"
+      ],
+      "institutional_trust": {
+        "government": "Moderate",
+        "media": "Moderate",
+        "experts": "High"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "some_college__no_degree",
+        "educational_services__health_care__and_social_as",
+        "sales_and_office",
+        "moderate_liberal"
+      ],
+      "representation_pct": 9.68,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "worker_class",
+          "income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High demographic fidelity, moderate confidence in inferred issues/politics per state and occupation trends.",
+        "pums_sample": {
+          "sample_id": "pums_sample_13",
+          "decoded_record": {
+            "age": 70,
+            "sex": "Female",
+            "race_ethnicity": "White alone",
+            "education": "Some college, no degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Private for-profit wage and salary worker",
+            "occupation": "Sales and office",
+            "industry": "Educational services, health care, and social assistance",
+            "personal_income": 90600,
+            "person_weight": 83,
+            "raw_codes": {
+              "AGEP": "70",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "18",
+              "ESR": "1",
+              "COW": "1",
+              "OCCP": "5110",
+              "INDP": "7970",
+              "PINCP": "90600",
+              "PWGTP": "83"
+            }
+          },
+          "person_weight": 83
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums_sample_14",
+      "name": "Veronica Lopez",
+      "age": 46,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Hispanic or Latino",
+      "education": "Associate's degree",
+      "occupation": "Service",
+      "industry": "Educational services, health care, and social assistance",
+      "income_bracket": "$32,000",
+      "party_affiliation": "Leans Democratic, moderate-progressive",
+      "ideology": "Leans Democratic, moderate-progressive",
+      "top_issues": [
+        "Public education funding",
+        "Access to healthcare",
+        "Cost of living",
+        "Affordable housing"
+      ],
+      "media_diet": [
+        "Local Spanish-language news",
+        "Public radio",
+        "Network TV news",
+        "Facebook community groups"
+      ],
+      "institutional_trust": {
+        "government": "Moderate (generally supportive but with concerns about efficacy)",
+        "media": "Moderate (relies on legacy outlets, some skepticism of national news)",
+        "experts": "High (trusts health and education professionals)"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "hispanic_or_latino",
+        "associate_s_degree",
+        "educational_services__health_care__and_social_as",
+        "service",
+        "leans_democratic__moderate_progressive"
+      ],
+      "representation_pct": 17.27,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "industry",
+          "occupation",
+          "worker_class",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High fidelity for demographic and occupational traits; moderate for inferred narrative, following state context and sector-specific patterns.",
+        "pums_sample": {
+          "sample_id": "pums_sample_14",
+          "decoded_record": {
+            "age": 46,
+            "sex": "Female",
+            "race_ethnicity": "Hispanic or Latino",
+            "education": "Associate's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Local government worker",
+            "occupation": "Service",
+            "industry": "Educational services, health care, and social assistance",
+            "personal_income": 32000,
+            "person_weight": 148,
+            "raw_codes": {
+              "AGEP": "46",
+              "SEX": "2",
+              "HISP": "02",
+              "RAC1P": "9",
+              "SCHL": "20",
+              "ESR": "1",
+              "COW": "3",
+              "OCCP": "2300",
+              "INDP": "7860",
+              "PINCP": "32000",
+              "PWGTP": "148"
+            }
+          },
+          "person_weight": 148
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA_pums_15",
+      "name": "Susan M.",
+      "age": 66,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Graduate or professional degree",
+      "occupation": "N/A",
+      "industry": "Retired / Not in labor force",
+      "income_bracket": "$100,000-$149,999",
+      "party_affiliation": "Liberal-leaning",
+      "ideology": "Liberal-leaning",
+      "top_issues": [
+        "Healthcare/Medicare",
+        "Social Security",
+        "Climate change",
+        "Costs of living",
+        "Public education"
+      ],
+      "media_diet": [
+        "NPR",
+        "PBS",
+        "Local newspaper (online/print)",
+        "The New York Times",
+        "CNN"
+      ],
+      "institutional_trust": {
+        "government": "Moderate",
+        "media": "High",
+        "experts": "High"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "graduate_or_professional_degree",
+        "retired___not_in_labor_force",
+        "n_a",
+        "liberal_leaning"
+      ],
+      "representation_pct": 2.45,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographics and education/income; Moderate for issue salience and political view given state and sample context.",
+        "pums_sample": {
+          "sample_id": "pums_sample_15",
+          "decoded_record": {
+            "age": 66,
+            "sex": "Female",
+            "race_ethnicity": "White alone",
+            "education": "Graduate or professional degree",
+            "employment_status": "Not in labor force",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": 110000,
+            "person_weight": 21,
+            "raw_codes": {
+              "AGEP": "66",
+              "SEX": "2",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "22",
+              "ESR": "6",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "110000",
+              "PWGTP": "21"
+            }
+          },
+          "person_weight": 21
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA-pums16",
+      "name": "David S.",
+      "age": 43,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "High school graduate",
+      "occupation": "Sales and office",
+      "industry": "Other services (except public administration)",
+      "income_bracket": "$10,000-$14,999",
+      "party_affiliation": "Moderate-to-conservative, fiscally cautious",
+      "ideology": "Moderate-to-conservative, fiscally cautious",
+      "top_issues": [
+        "Small business regulation and taxes",
+        "Affordable healthcare access",
+        "Cost of living",
+        "Homelessness in the community"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "Business and trade publications",
+        "Facebook Groups",
+        "Occasional talk radio"
+      ],
+      "institutional_trust": {
+        "government": "Mixed to low (frustrated by regulation, some reliance on local government)",
+        "media": "Low to moderate (prefers local, distrusts national outlets)",
+        "experts": "Moderate; trusts business associations over academics"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "high_school_graduate",
+        "other_services__except_public_administration",
+        "sales_and_office",
+        "moderate_to_conservative__fiscally_cautious"
+      ],
+      "representation_pct": 5.13,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "occupation",
+          "industry",
+          "worker_class",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for census-matched attributes; political and media trait confidence moderate\u2014well-supported by aggregate studies but not deterministically ascribed.",
+        "pums_sample": {
+          "sample_id": "pums_sample_16",
+          "decoded_record": {
+            "age": 43,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "High school graduate",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Self-employed in own incorporated business",
+            "occupation": "Sales and office",
+            "industry": "Other services",
+            "personal_income": 11000,
+            "person_weight": 44,
+            "raw_codes": {
+              "AGEP": "43",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "16",
+              "ESR": "1",
+              "COW": "6",
+              "OCCP": "4760",
+              "INDP": "5581",
+              "PINCP": "11000",
+              "PWGTP": "44"
+            }
+          },
+          "person_weight": 44
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "pums_sample_17",
+      "name": "Ryan Chen",
+      "age": 2,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "Less than high school",
+      "occupation": "Not applicable (child)",
+      "industry": "Not in labor force (child)",
+      "income_bracket": "Not applicable (minor, personal income reported as negative)",
+      "party_affiliation": "No personal political view (minor)",
+      "ideology": "No personal political view (minor)",
+      "top_issues": [
+        "Child care",
+        "Early education and preschool access",
+        "Healthcare access (pediatric)"
+      ],
+      "media_diet": [
+        "Children\u2019s television",
+        "Family online streaming",
+        "Parental media choices"
+      ],
+      "institutional_trust": {
+        "government": "Not personally developed (child); dependent on parental environment",
+        "media": "Not personally developed",
+        "experts": "Not personally developed"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "less_than_high_school",
+        "not_in_labor_force__child",
+        "not_applicable__child",
+        "no_personal_political_view__minor"
+      ],
+      "representation_pct": 8.28,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "RAC1P",
+          "SEX",
+          "SCHL"
+        ],
+        "inferred_fields": [
+          "Age band",
+          "Media environment",
+          "Top issues",
+          "Institutional trust",
+          "Political view"
+        ],
+        "confidence": "High for demographic and household context; inferred fields approximate based on age and social context.",
+        "pums_sample": {
+          "sample_id": "pums_sample_17",
+          "decoded_record": {
+            "age": 2,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "Less than high school",
+            "employment_status": "Unknown",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": -19999,
+            "person_weight": 71,
+            "raw_codes": {
+              "AGEP": "2",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "0",
+              "ESR": "0",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "-19999",
+              "PWGTP": "71"
+            }
+          },
+          "person_weight": 71
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA-PUMS18-2024",
+      "name": "Richard",
+      "age": 63,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Bachelor's degree",
+      "occupation": "Not in labor force",
+      "industry": "Not in labor force",
+      "income_bracket": "$0 (not in labor force)",
+      "party_affiliation": "Moderate-leaning Conservative",
+      "ideology": "Moderate-leaning Conservative",
+      "top_issues": [
+        "Healthcare costs",
+        "Social Security/retirement security",
+        "Cost of living/inflation"
+      ],
+      "media_diet": [
+        "Local TV news",
+        "National broadcast news (ABC/NBC/CBS)",
+        "Online newspapers"
+      ],
+      "institutional_trust": {
+        "government": "Mixed",
+        "media": "Moderate",
+        "experts": "Moderate-High"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "bachelor_s_degree",
+        "not_in_labor_force",
+        "not_in_labor_force",
+        "moderate_leaning_conservative"
+      ],
+      "representation_pct": 2.22,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "employment_status",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High for demographic/socioeconomic; medium for inferred attitudinal.",
+        "pums_sample": {
+          "sample_id": "pums_sample_18",
+          "decoded_record": {
+            "age": 63,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Bachelor's degree",
+            "employment_status": "Not in labor force",
+            "worker_class": "Unknown",
+            "occupation": "Unknown occupation",
+            "industry": "Unknown industry",
+            "personal_income": 0,
+            "person_weight": 19,
+            "raw_codes": {
+              "AGEP": "63",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "21",
+              "ESR": "6",
+              "COW": "0",
+              "OCCP": "N",
+              "INDP": "N",
+              "PINCP": "0",
+              "PWGTP": "19"
+            }
+          },
+          "person_weight": 19
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "CA-PUMS19",
+      "name": "Stanley",
+      "age": 69,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "White alone",
+      "education": "Associate's degree",
+      "occupation": "Management, business, science, and arts",
+      "industry": "Professional, scientific, management, administrative, and waste management services",
+      "income_bracket": "$70,700 (personal; likely in $50k-$74k household band)",
+      "party_affiliation": "Moderate/leaning slightly conservative",
+      "ideology": "Moderate/leaning slightly conservative",
+      "top_issues": [
+        "Tax policy and small business regulation",
+        "Healthcare (Medicare)",
+        "Social Security",
+        "Economic growth/inflation",
+        "Affordable housing for seniors"
+      ],
+      "media_diet": [
+        "Broadcast news (local/NBC/ABC/CBS)",
+        "Business news (CNBC, WSJ, Forbes)",
+        "Public radio (NPR)",
+        "Some online news portals"
+      ],
+      "institutional_trust": {
+        "government": "Moderately low",
+        "media": "Mixed/mostly skeptical",
+        "experts": "Moderate (especially financial/health experts)"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "white_alone",
+        "associate_s_degree",
+        "professional__scientific__management__administra",
+        "management__business__science__and_arts",
+        "moderate_leaning_slightly_conservative"
+      ],
+      "representation_pct": 1.52,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "age",
+          "sex",
+          "race_ethnicity",
+          "education",
+          "worker_class",
+          "occupation_group",
+          "employed_sector",
+          "personal_income"
+        ],
+        "inferred_fields": [
+          "political_view",
+          "media_environment",
+          "top_issues",
+          "institutional_trust"
+        ],
+        "confidence": "High on demographic/cohort, moderate on inferred traits",
+        "pums_sample": {
+          "sample_id": "pums_sample_19",
+          "decoded_record": {
+            "age": 69,
+            "sex": "Male",
+            "race_ethnicity": "White alone",
+            "education": "Associate's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Self-employed in own incorporated business",
+            "occupation": "Management, business, science, and arts",
+            "industry": "Professional, scientific, management, administrative, and waste management services",
+            "personal_income": 70700,
+            "person_weight": 13,
+            "raw_codes": {
+              "AGEP": "69",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "1",
+              "SCHL": "19",
+              "ESR": "1",
+              "COW": "6",
+              "OCCP": "0440",
+              "INDP": "7390",
+              "PINCP": "70700",
+              "PWGTP": "13"
+            }
+          },
+          "person_weight": 13
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    },
+    {
+      "persona_id": "ca_pums_20",
+      "name": "Eric Chen",
+      "age": 36,
+      "location": {
+        "city": "California",
+        "state": "CA",
+        "geo_type": "state"
+      },
+      "race_ethnicity": "Asian alone",
+      "education": "Bachelor's degree",
+      "occupation": "Sales and office",
+      "industry": "Finance, insurance, real estate, rental, and leasing",
+      "income_bracket": "150,000+",
+      "party_affiliation": "Moderate Democrat",
+      "ideology": "Moderate Democrat",
+      "top_issues": [
+        "Affordable housing",
+        "Economic opportunity",
+        "Healthcare quality",
+        "Climate change",
+        "Anti-Asian discrimination"
+      ],
+      "media_diet": [
+        "NPR",
+        "The New York Times Online",
+        "CNN",
+        "LinkedIn",
+        "WeChat (for community news)"
+      ],
+      "institutional_trust": {
+        "government": "High",
+        "media": "Moderate",
+        "experts": "High"
+      },
+      "personal_stake": "Synthetic campaign-reaction stake inferred from aggregate demographic and economic context.",
+      "segment_tags": [
+        "asian_alone",
+        "bachelor_s_degree",
+        "finance__insurance__real_estate__rental__and_lea",
+        "sales_and_office",
+        "moderate_democrat"
+      ],
+      "representation_pct": 3.86,
+      "representation_basis": "Normalized ACS PUMS PWGTP weight across the N sampled records.",
+      "evidence_backing": {
+        "census_fields_used": [
+          "AGEP",
+          "SCHL",
+          "RAC1P",
+          "SEX",
+          "PINCP",
+          "INDP",
+          "OCCP",
+          "COW"
+        ],
+        "inferred_fields": [
+          "Political view",
+          "Media environment",
+          "Top issues",
+          "Institutional trust"
+        ],
+        "confidence": "High for demographic/work fields; Moderate for inferred attitudinal fields.",
+        "pums_sample": {
+          "sample_id": "pums_sample_20",
+          "decoded_record": {
+            "age": 36,
+            "sex": "Male",
+            "race_ethnicity": "Asian alone",
+            "education": "Bachelor's degree",
+            "employment_status": "Civilian employed, at work",
+            "worker_class": "Federal government worker",
+            "occupation": "Sales and office",
+            "industry": "Finance, insurance, real estate, rental, and leasing",
+            "personal_income": 150350,
+            "person_weight": 33,
+            "raw_codes": {
+              "AGEP": "36",
+              "SEX": "1",
+              "HISP": "01",
+              "RAC1P": "6",
+              "SCHL": "21",
+              "ESR": "1",
+              "COW": "5",
+              "OCCP": "5260",
+              "INDP": "6290",
+              "PINCP": "150350",
+              "PWGTP": "33"
+            }
+          },
+          "person_weight": 33
+        },
+        "acs_year": null,
+        "source_pipeline": "persona_pipeline.population.PopulationPipeline",
+        "generation_method": "OpenAI structured output from ACS aggregate evidence and weighted ACS PUMS samples",
+        "population_profile_status": "complete",
+        "raw_census_name": "California"
+      }
+    }
+  ]
+}

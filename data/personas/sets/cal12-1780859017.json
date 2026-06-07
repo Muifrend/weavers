@@ -1,4 +1,10 @@
 {
+  "set_id": "cal12-1780859017",
+  "label": "cal12",
+  "location": "California",
+  "persona_count": 12,
+  "created_at": 1780859017.4683368,
+  "representation_total_pct": 100.0,
   "personas": [
     {
       "persona_id": "CA-pums-1-62F-White-Bach-NLF",

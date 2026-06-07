@@ -13,7 +13,7 @@ from app.config import get_settings
 from app.agents.persona_creation import PersonaCreationAgent
 from app.orchestrator import CampaignOrchestrator
 from app.providers.base import ProviderError
-from app.schemas import PersonaGenerationRequest, PersonaGenerationResponse, RunRequest
+from app.schemas import PersonaGenerationRequest, PersonaGenerationResponse, PersonaSetSummary, RunRequest
 from app.streaming.ag_ui_events import encode_sse
 
 
@@ -63,6 +63,19 @@ async def list_personas() -> dict[str, object]:
         "personas": [persona.model_dump(exclude_none=True) for persona in personas],
         "count": len(personas),
     }
+
+
+@app.get("/api/models")
+async def list_models() -> dict[str, object]:
+    orchestrator: CampaignOrchestrator = app.state.orchestrator
+    return {"providers": orchestrator.provider_router.available_models()}
+
+
+@app.get("/api/persona-sets")
+async def list_persona_sets() -> dict[str, object]:
+    orchestrator: CampaignOrchestrator = app.state.orchestrator
+    sets = [PersonaSetSummary(**summary) for summary in orchestrator.local_store.list_persona_sets()]
+    return {"sets": [item.model_dump() for item in sets]}
 
 
 @app.post("/api/personas/generate", response_model=PersonaGenerationResponse)

@@ -1,0 +1,67 @@
+/* ============================================================================
+   weavers design kit — tokens
+   Editorial-light system derived from the left sidebar:
+   white surfaces, #ff4438 accent, navy ink, Georgia-italic display type.
+   See DESIGN_KIT.md for usage guidance.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --paper: #ffffff;       /* cards, sidebar, primary surface */
+  --canvas: #f7f9fa;      /* app background behind cards */
+  --panel-soft: #f1f4f6;  /* hovered / active subtle fills */
+  --navy: #0f2530;        /* inverted surface (status, score orb) */
+
+  /* Ink */
+  --ink: #102331;         /* primary text + headlines */
+  --ink-soft: #244459;    /* secondary text */
+  --ink-muted: #8b9aa5;   /* labels, meta, captions */
+  --ink-invert: #fdfaf4;  /* text on navy surfaces */
+
+  /* Lines */
+  --line: #d9dee2;                    /* hairline borders / dividers */
+  --line-soft: rgba(16, 35, 49, 0.12); /* faint internal separators */
+
+  /* Accent */
+  --accent: #ff4438;                  /* the weavers red */
+  --accent-strong: #e23a2f;           /* hover/pressed */
+  --accent-soft: rgba(255, 68, 56, 0.10);
+  --accent-ink: #fff6f5;              /* text on accent fills */
+
+  /* Data viz — sentiment */
+  --negative: #ff4438;
+  --mixed: #d9a441;
+  --positive: #3f8f5b;
+  --negative-soft: rgba(255, 68, 56, 0.12);
+  --mixed-soft: rgba(217, 164, 65, 0.16);
+  --positive-soft: rgba(63, 143, 91, 0.14);
+
+  /* Status dots */
+  --status-idle: #b6c2cb;
+  --status-busy: #4f9dde;
+  --status-ok: #3f8f5b;
+  --status-fail: #ff4438;
+
+  /* Typography */
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: "Avenir Next", "Trebuchet MS", system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(16, 35, 49, 0.06), 0 8px 24px rgba(16, 35, 49, 0.06);
+  --shadow-pop: 0 12px 40px rgba(16, 35, 49, 0.14);
+}

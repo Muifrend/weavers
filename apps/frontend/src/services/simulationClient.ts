@@ -5,6 +5,16 @@ export type SimulationRequest = {
   stimulus_text: string;
   memory_enabled: boolean;
   persona_count: number;
+  persona_set_id?: string;
+  providers?: string[];
+  provider_models?: Record<string, string>;
+  skip_benchmark?: boolean;
+};
+
+export type ModelProvider = {
+  id: string;
+  default_model: string;
+  configured: boolean;
 };
 
 export type SimulationEventHandlers = {
@@ -29,8 +39,41 @@ export type PersonaGenerationResponse = {
   personas: GeneratedPersonaSummary[];
   representation_total_pct: number;
   saved_path?: string;
+  set_id?: string;
+  set_label?: string;
   warnings: string[];
 };
+
+export type PersonaSetSummary = {
+  set_id: string;
+  label: string;
+  location: string;
+  persona_count: number;
+  created_at: number;
+  representation_total_pct: number;
+};
+
+function resolveApiUrl() {
+  return (import.meta.env.VITE_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
+}
+
+export async function listModels(): Promise<ModelProvider[]> {
+  const response = await fetch(`${resolveApiUrl()}/api/models`);
+  if (!response.ok) {
+    throw new Error(`Failed to load models (HTTP ${response.status})`);
+  }
+  const payload = await response.json();
+  return (payload?.providers ?? []) as ModelProvider[];
+}
+
+export async function listPersonaSets(): Promise<PersonaSetSummary[]> {
+  const response = await fetch(`${resolveApiUrl()}/api/persona-sets`);
+  if (!response.ok) {
+    throw new Error(`Failed to load persona sets (HTTP ${response.status})`);
+  }
+  const payload = await response.json();
+  return (payload?.sets ?? []) as PersonaSetSummary[];
+}
 
 export async function startSimulation(
   request: SimulationRequest,
@@ -48,8 +91,8 @@ export async function subscribeToSimulationEvents(
   await startSimulation(request, handlers, signal);
 }
 
-export async function generatePersonasForState(location: string, personaCount: number) {
-  const apiUrl = (import.meta.env.VITE_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
+export async function generatePersonasForState(location: string, personaCount: number, setLabel?: string) {
+  const apiUrl = resolveApiUrl();
   const response = await fetch(`${apiUrl}/api/personas/generate`, {
     method: "POST",
     headers: {
@@ -58,7 +101,8 @@ export async function generatePersonasForState(location: string, personaCount: n
     body: JSON.stringify({
       location,
       persona_count: personaCount,
-      persist: true
+      persist: true,
+      set_label: setLabel && setLabel.trim().length > 0 ? setLabel.trim() : null
     })
   });
 

@@ -88,7 +88,7 @@ class CampaignOrchestrator:
             return
 
         try:
-            selected_personas = self.local_store.select_personas(request.persona_count)
+            selected_personas = self.local_store.select_personas(request.persona_count, request.persona_set_id)
         except (FileNotFoundError, ValueError) as exc:
             yield builder.emit(
                 "run.failed",
@@ -104,7 +104,11 @@ class CampaignOrchestrator:
             )
             return
 
-        personas = self.provider_router.assign_personas(selected_personas)
+        personas = self.provider_router.assign_personas(
+            selected_personas,
+            providers=request.providers,
+            model_overrides=request.provider_models,
+        )
 
         agent = PersonaAgent(self.provider_router, self.memory, self.weave)
         semaphore = asyncio.Semaphore(max(1, self.settings.persona_concurrency_limit))
@@ -196,12 +200,13 @@ class CampaignOrchestrator:
             },
         )
 
-        benchmark_id = benchmark_id_for(request.stimulus_id)
-        yield builder.emit("benchmark.started", {"benchmark_id": benchmark_id})
+        if not request.skip_benchmark:
+            benchmark_id = benchmark_id_for(request.stimulus_id)
+            yield builder.emit("benchmark.started", {"benchmark_id": benchmark_id})
 
-        benchmark_agent = BenchmarkAgent(self.local_store, self.weave)
-        benchmark = await benchmark_agent.run(benchmark_id=benchmark_id, synthesis=synthesis)
-        yield builder.emit("benchmark.completed", benchmark.model_dump())
+            benchmark_agent = BenchmarkAgent(self.local_store, self.weave)
+            benchmark = await benchmark_agent.run(benchmark_id=benchmark_id, synthesis=synthesis)
+            yield builder.emit("benchmark.completed", benchmark.model_dump())
 
         total_latency_ms = int((time.perf_counter() - started) * 1000)
         yield builder.emit(

@@ -30,6 +30,10 @@ class RunRequest(BaseModel):
     stimulus_text: str
     memory_enabled: bool
     persona_count: int = Field(default=20, ge=1, le=100)
+    persona_set_id: str | None = None
+    providers: list[str] | None = None
+    provider_models: dict[str, str] | None = None
+    skip_benchmark: bool = False
 
 
 class PersonaLocation(BaseModel):
@@ -145,6 +149,7 @@ class PersonaGenerationRequest(BaseModel):
     location: str
     persona_count: int = Field(default=10, ge=1, le=100)
     persist: bool = True
+    set_label: str | None = None
 
 
 class PersonaGenerationResponse(BaseModel):
@@ -155,4 +160,15 @@ class PersonaGenerationResponse(BaseModel):
     demographic_priors: dict[str, Any]
     population_context: dict[str, Any]
     saved_path: str | None = None
+    set_id: str | None = None
+    set_label: str | None = None
     warnings: list[str] = Field(default_factory=list)
+
+
+class PersonaSetSummary(BaseModel):
+    set_id: str
+    label: str
+    location: str
+    persona_count: int
+    created_at: float
+    representation_total_pct: float
