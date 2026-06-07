@@ -9,8 +9,10 @@ export function BenchmarkComparison({ benchmark }: Props) {
     return <p className="empty-note">Benchmark comparison waits for synthesis output.</p>;
   }
 
-  const rows = benchmark.simulated_distribution.map((simulated) => {
-    const actual = benchmark.actual_polling_data.find((item) => item.segment === simulated.segment);
+  const simulatedDistribution = benchmark.simulated_distribution ?? [];
+  const actualPollingData = benchmark.actual_polling_data ?? [];
+  const rows = simulatedDistribution.map((simulated) => {
+    const actual = actualPollingData.find((item) => item.segment === simulated.segment);
     return { simulated, actual };
   });
 

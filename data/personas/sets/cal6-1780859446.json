@@ -1,4 +1,10 @@
 {
+  "set_id": "cal6-1780859446",
+  "label": "cal6",
+  "location": "California",
+  "persona_count": 6,
+  "created_at": 1780859446.375434,
+  "representation_total_pct": 100.0,
   "personas": [
     {
       "persona_id": "ca_pums_sample1_001",

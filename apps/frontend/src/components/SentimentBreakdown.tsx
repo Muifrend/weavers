@@ -2,22 +2,25 @@ import type { SynthesisSegmentPayload } from "../lib/agui";
 import { SegmentInsightCard } from "./SegmentInsightCard";
 
 type Props = {
-  segments: SynthesisSegmentPayload[];
+  segments?: SynthesisSegmentPayload[];
 };
 
 export function SentimentBreakdown({ segments }: Props) {
-  if (segments.length === 0) {
+  const items = Array.isArray(segments) ? segments : [];
+
+  if (items.length === 0) {
     return <p className="empty-note">Segment synthesis will appear after persona reactions finish.</p>;
   }
 
-  const counts = segments.reduce(
+  const counts = items.reduce(
     (acc, segment) => {
-      const direction = segment.sentiment_direction.includes("positive")
+      const rawDirection = segment?.sentiment_direction ?? "";
+      const direction = rawDirection.includes("positive")
         ? "positive"
-        : segment.sentiment_direction.includes("negative")
+        : rawDirection.includes("negative")
           ? "negative"
           : "mixed";
-      acc[direction] += segment.persona_count;
+      acc[direction] += segment?.persona_count ?? 0;
       return acc;
     },
     { positive: 0, negative: 0, mixed: 0 }
@@ -37,9 +40,9 @@ export function SentimentBreakdown({ segments }: Props) {
         <span>Positive {counts.positive}</span>
       </div>
       <div className="segment-list">
-      {segments.map((segment) => (
-        <SegmentInsightCard key={segment.segment_id} segment={segment} />
-      ))}
+        {items.map((segment, index) => (
+          <SegmentInsightCard key={`${segment?.segment_id ?? "segment"}-${index}`} segment={segment} />
+        ))}
       </div>
     </div>
   );

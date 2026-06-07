@@ -705,6 +705,71 @@ body {
   min-width: 170px;
 }
 
+.run-actions .attach-button {
+  margin-right: auto;
+  min-width: auto;
+  padding: 0 16px;
+}
+
+/* Attachment previews (mockup — not sent to the models) */
+.attachment-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.attachment {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--canvas);
+  overflow: hidden;
+}
+
+.attachment img {
+  display: block;
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+}
+
+.attachment-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 88px;
+  padding: 8px;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-align: center;
+  word-break: break-word;
+}
+
+.run-panel .attachment-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(16, 35, 49, 0.72);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.run-panel .attachment-remove:hover:not(:disabled) {
+  background: var(--accent);
+}
+
 /* ----------------------------------------------------------------------------
    Settings — model selection
    -------------------------------------------------------------------------- */
@@ -1224,6 +1289,30 @@ body {
   color: var(--ink-muted);
   font-size: 0.82rem;
   font-weight: 700;
+}
+
+/* ----------------------------------------------------------------------------
+   Error boundary fallback
+   -------------------------------------------------------------------------- */
+.error-boundary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.error-boundary h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-style: italic;
 }
 
 /* ----------------------------------------------------------------------------

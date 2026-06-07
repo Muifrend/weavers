@@ -18,8 +18,8 @@ export function PersonaReactionCard({ persona }: Props) {
       <p>{persona.reaction_text}</p>
       <blockquote>{persona.voter_voice_quote}</blockquote>
       <div className="tag-row">
-        {persona.segment_tags.slice(0, 4).map((tag) => (
-          <span key={tag}>{tag.replaceAll("_", " ")}</span>
+        {(persona.segment_tags ?? []).slice(0, 4).map((tag, index) => (
+          <span key={`${tag}-${index}`}>{tag.replaceAll("_", " ")}</span>
         ))}
       </div>
       <footer>{persona.model_used}</footer>
