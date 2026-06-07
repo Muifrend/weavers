@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import logging
+import re
+from hashlib import sha1
 from datetime import UTC, datetime
 from typing import Any
 
@@ -49,7 +51,7 @@ class RedisAgentMemory:
             response = await client.request(method, self._url(path), headers=self._headers(), json=json_body)
 
         if response.status_code >= 400:
-            raise RuntimeError(f"Redis Agent Memory request failed with HTTP {response.status_code}.")
+            raise RuntimeError(_redis_error_message(response))
         try:
             data = response.json()
         except ValueError:
@@ -68,7 +70,7 @@ class RedisAgentMemory:
         for persona in personas:
             memories.append(
                 {
-                    "id": f"profile:{persona.persona_id}",
+                    "id": redis_safe_id("profile", persona.persona_id),
                     "text": profile_text(persona),
                     "memoryType": "semantic",
                     "ownerId": owner_id(persona.persona_id),
@@ -170,7 +172,7 @@ class RedisAgentMemory:
         created_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
         event_body = {
-            "sessionId": run_id,
+            "sessionId": session_id(run_id),
             "actorId": owner_id(persona.persona_id),
             "role": "ASSISTANT",
             "content": [{"text": text}],
@@ -186,10 +188,10 @@ class RedisAgentMemory:
         memory_body = {
             "memories": [
                 {
-                    "id": f"reaction:{run_id}:{persona.persona_id}",
+                    "id": redis_safe_id("reaction", run_id, persona.persona_id),
                     "text": text,
                     "memoryType": "episodic",
-                    "sessionId": run_id,
+                    "sessionId": session_id(run_id),
                     "ownerId": owner_id(persona.persona_id),
                     "namespace": "reactions",
                     "topics": ["political_reaction", stimulus_id, *persona.segment_tags[:3]],
@@ -209,7 +211,7 @@ class RedisAgentMemory:
                 json_body=memory_body,
             )
         except Exception as exc:  # noqa: BLE001
-            warning = f"Redis reaction write failed; continuing demo. {_safe_exception(exc)}"
+            warning = f"Redis reaction write failed; continuing demo. {_safe_exception(exc)}: {exc}"
             logger.warning(warning)
             return warning
 
@@ -217,7 +219,23 @@ class RedisAgentMemory:
 
 
 def owner_id(persona_id: str) -> str:
-    return f"persona:{persona_id}"
+    return redis_safe_id("persona", persona_id)
+
+
+def session_id(run_id: str) -> str:
+    return redis_safe_id(run_id)
+
+
+def redis_safe_id(*parts: str, max_length: int = 64) -> str:
+    raw = "-".join(str(part) for part in parts if str(part))
+    safe = re.sub(r"[^A-Za-z0-9-]+", "-", raw).strip("-")
+    safe = re.sub(r"-{2,}", "-", safe)
+    if not safe:
+        return "memory-id"
+    if len(safe) <= max_length:
+        return safe
+    digest = sha1(safe.encode("utf-8")).hexdigest()[:10]
+    return f"{safe[: max_length - 11].rstrip('-')}-{digest}"
 
 
 def profile_text(persona: Persona) -> str:
@@ -264,3 +282,14 @@ def _extract_memory_texts(data: dict[str, Any]) -> list[str]:
 def _safe_exception(exc: Exception) -> str:
     return exc.__class__.__name__
 
+
+def _redis_error_message(response: httpx.Response) -> str:
+    try:
+        data = response.json()
+    except ValueError:
+        return f"Redis Agent Memory request failed with HTTP {response.status_code}."
+
+    detail = data.get("detail") if isinstance(data, dict) else None
+    if isinstance(detail, str) and detail:
+        return f"Redis Agent Memory request failed with HTTP {response.status_code}: {detail}"
+    return f"Redis Agent Memory request failed with HTTP {response.status_code}."

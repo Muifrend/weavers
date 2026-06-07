@@ -21,13 +21,14 @@ PROVIDER_MODELS = {
     "openrouter": "openai/gpt-4o-mini",
 }
 
-FULL_DEMO_PROVIDER_PLAN = ["openai"] * 7 + ["anthropic"] * 7 + ["gemini"] * 4 + ["openrouter"] * 2
-SMOKE_PROVIDER_PLAN = ["openai", "anthropic", "gemini"]
+# Temporary credit-saving mode: route demo persona traffic to OpenAI first.
+FULL_DEMO_PROVIDER_PLAN = ["openai"] * 20
+SMOKE_PROVIDER_PLAN = ["openai", "openai", "openai"]
 FALLBACKS = {
-    "openrouter": ["openai", "anthropic", "gemini"],
-    "gemini": ["openai", "anthropic"],
-    "anthropic": ["openai", "gemini"],
-    "openai": ["anthropic", "gemini"],
+    "openrouter": ["openai"],
+    "gemini": ["openai"],
+    "anthropic": ["openai"],
+    "openai": ["anthropic", "gemini", "openrouter"],
 }
 
 
@@ -58,8 +59,7 @@ class ProviderRouter:
         elif total <= 3:
             plan = SMOKE_PROVIDER_PLAN[:total]
         else:
-            base = ["openai", "anthropic", "gemini", "openrouter"]
-            plan = [base[index % len(base)] for index in range(total)]
+            plan = ["openai"] * total
 
         assigned: list[Persona] = []
         for index, persona in enumerate(personas):
@@ -131,4 +131,3 @@ class ProviderRouter:
         if not provider:
             raise ProviderError(provider_name, "provider_not_configured", f"{provider_name} is not configured.")
         return await provider.check()
-
