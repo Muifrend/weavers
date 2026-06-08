@@ -41,3 +41,5 @@ apps/frontend/vite.config.d.ts.map
 
 # Imported reference checkout; integrated source lives in persona_pipeline/.
 Agentic-Civilization-Persona-Generator/
+
+data/personas/sets

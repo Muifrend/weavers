@@ -6,6 +6,8 @@ from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from fastapi.responses import Response
 from fastapi.responses import StreamingResponse
 import httpx
 
@@ -18,6 +20,7 @@ from app.streaming.ag_ui_events import encode_sse
 
 
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 settings = get_settings()
 app = FastAPI(title="Campaign Persona Agent", version="0.1.0")
@@ -102,7 +105,7 @@ async def generate_personas(request: PersonaGenerationRequest) -> PersonaGenerat
     "/api/copilotkit/{path:path}",
     methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
 )
-async def copilotkit_proxy(request: Request, path: str = "") -> StreamingResponse:
+async def copilotkit_proxy(request: Request, path: str = "") -> Response:
     target_url = f"{settings.copilot_runtime_url}{request.url.path}"
     if request.url.query:
         target_url = f"{target_url}?{request.url.query}"
@@ -122,14 +125,37 @@ async def copilotkit_proxy(request: Request, path: str = "") -> StreamingRespons
     }
 
     body = await request.body()
-    client = httpx.AsyncClient(timeout=None)
+    client = httpx.AsyncClient(
+        timeout=httpx.Timeout(connect=5.0, read=None, write=30.0, pool=5.0)
+    )
     upstream_request = client.build_request(
         request.method,
         target_url,
         headers=request_headers,
         content=body,
     )
-    upstream_response = await client.send(upstream_request, stream=True)
+    try:
+        upstream_response = await client.send(upstream_request, stream=True)
+    except httpx.RequestError as exc:
+        await client.aclose()
+        logger.warning(
+            "CopilotKit runtime unavailable at %s: %s",
+            settings.copilot_runtime_url,
+            exc.__class__.__name__,
+        )
+        return JSONResponse(
+            status_code=503,
+            content={
+                "detail": {
+                    "error_code": "copilot_runtime_unavailable",
+                    "message": (
+                        "CopilotKit runtime is not reachable. Start it with `npm run dev` "
+                        "from apps/copilot-runtime, or update COPILOT_RUNTIME_URL."
+                    ),
+                    "runtime_url": settings.copilot_runtime_url,
+                }
+            },
+        )
 
     async def response_body():
         try:
